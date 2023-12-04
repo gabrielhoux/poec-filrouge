@@ -8,7 +8,7 @@ import OpenAI from "openai";
 // Récupération de la clé API, stockée dans la variable API_KEY du fichier .env
 const apiKey = process.env.API_KEY;
 
-// Initialisation d'OpenAI avec la clé API sélectionnée et autorisation de l'utilisation dans le navigateur
+// Initialisation d'OpenAI avec la clé API et autorisation de l'utilisation dans le navigateur
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
 // Exemple de liste d'ingrédients pour la recette
