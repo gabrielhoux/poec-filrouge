@@ -45,7 +45,7 @@ async function fetchOpenAI(prompt) {
 }
 
 // Fonction pour formater la recette en ajoutant des retours à la ligne devant les numéros des étapes
-const formatRecipe = (rawRecipe) => {
+function formatRecipe(rawRecipe) {
   const formatted = rawRecipe.replace(/(\d+\.\s)/g, "\n$&");
   return formatted;
 };
