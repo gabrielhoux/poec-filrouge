@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accepter ou Refuser les Cookies</title>
+  <style>
+    /* Style pour le message de la bannière de cookies */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Style pour les boutons accepter et refuser */
+    .cookie-btn {
+      padding: 5px 10px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bannière de cookies -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Ce site utilise des cookies. Acceptez-vous leur utilisation ?</p>
+    <button class="cookie-btn" onclick="acceptCookies()">Accepter</button>
+    <button class="cookie-btn" onclick="refuseCookies()">Refuser</button>
+  </div>
+
+  <script>
+    // Fonctions pour accepter ou refuser les cookies
+    function acceptCookies() {
+      // Ici, vous pouvez mettre en œuvre le code pour accepter les cookies
+      // Par exemple, en utilisant localStorage ou document.cookie pour enregistrer la préférence de l'utilisateur
+      // Pour cet exemple, on suppose simplement que l'utilisateur a accepté et on masque la bannière
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+
+    function refuseCookies() {
+      // Ici, vous pouvez mettre en œuvre le code pour refuser les cookies
+      // Par exemple, en ne plaçant aucun cookie ou en supprimant les cookies existants
+      // Pour cet exemple, on suppose simplement que l'utilisateur a refusé et on masque la bannière
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+  </script>
+
+  <!-- Votre contenu de page va ici -->
+  <h1>Exemple de page</h1>
+  <p>Contenu de votre site web...</p>
+
+</body>
+</html>
