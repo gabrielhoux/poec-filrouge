@@ -1,16 +1,12 @@
+// Import du fichier .env
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Import de la bibliothèque OpenAI
 import OpenAI from "openai";
 
-// Clés API pour chaque utilisateur
-const apiKeys = {
-  "Gabriel": "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",
-  "Nora": "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",
-  "Maria": "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",
-  "José": "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"
-}
-
-// Clé API utilisée ici (dans cet exemple, la clé de "Gabriel" est utilisée)
-const apiKey = apiKeys["Gabriel"];
+// Récupération de la clé API, stockée dans la variable API_KEY du fichier .env
+const apiKey = process.env.API_KEY;
 
 // Initialisation d'OpenAI avec la clé API sélectionnée et autorisation de l'utilisation dans le navigateur
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
