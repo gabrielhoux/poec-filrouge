@@ -8,6 +8,9 @@ import OpenAI from "openai";
 // Récupération de la clé API, stockée dans la variable API_KEY du fichier .env
 const apiKey = process.env.API_KEY;
 
+// Récupération de l'ID de l'API Assistant ChatGPT dans la variable ASSISTANT_ID du fichier .env
+const assistantId = process.env.ASSISTANT_ID;
+
 // Initialisation d'OpenAI avec la clé API et autorisation de l'utilisation dans le navigateur
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
@@ -49,3 +52,26 @@ function formatRecipe(rawRecipe) {
   const formatted = rawRecipe.replace(/(\d+\.\s)/g, "\n$&");
   return formatted;
 };
+
+async function fetchRecipe(prompt) {
+  const thread = await openai.beta.threads.create();
+
+  const message = await openai.beta.threads.messages.create(
+    thread.id,
+    {
+      role: "user",
+      content: prompt
+    }
+  );
+
+  const run = await openai.beta.threads.runs.create(
+    thread.id,
+    { 
+      assistant_id: assistantId,
+    }
+  );
+
+  const messages = await openai.beta.threads.messages.list(
+    thread.id
+  );
+}
