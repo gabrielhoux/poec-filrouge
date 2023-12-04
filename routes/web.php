@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\RecetteController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +23,6 @@ Route::get('/', function () {
         return view('recettes', ['name' => 'James']);
     });
 });
+
+Route::get("/fromIngredient", [RecetteController::class, "form"])
+    ->name("fromIngredient");
