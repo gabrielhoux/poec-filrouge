@@ -5,26 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recette</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
+    <link rel="stylesheet" href="./app.css">
+
+
 </head>
 <body>
 
- 
+    <div>
+        <h1>{{ $donnees['titre'] }}</h1>
+       
+        <!-- Affichez les autres données ici -->
+        <div>
+           <h2>Liste des ingredients</h2>
+        <ul>
 
-<div class="recette"><br>
-    <h1><center>RECETTE</center></h1>
-  
+            @foreach($donnees['ingredients'] as $ingredient)
+                <li>{{ $ingredient }}</li>
+            @endforeach
+        </ul>
+       </div>
+        <div>
+        <ol>
+            @foreach($donnees['instructions'] as $instruction)
+            <li>{{ $instruction }}</li>
+            @endforeach
+        </ol>
+
+        </div>
+        <!-- Affichez le reste des données de la même manière -->
+    </div>
+
+    
+<!--<h1><center>RECETTE</center></h1>
+
+<div class="liste"><br>
+      <div>
          <p> <li></li></p>
           <li></li>
           <p></p><li></li></p>
           <li></li>
           <p></p><li></li></p>
           <li></li>
-
         </div>
-        <br><br><br><br><br><br><br>
+<br>
+    <div>
+    <p> Cal/100g</p>
+    </div>
+</div
+
+
+
+        <div class="gte">
+            <p>  Qte/Pers </p>
+        </div>
+        
+        <br>
         <div class="miame">
-            <h1></h1>
+            <h2>Mode de preparation :</h2>
             <p> Qu'est-ce que le Lorem Ipsum?
                 Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en<br> 
                 page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis <br>
@@ -36,11 +74,13 @@
 
 
         </div>
-          
-
+    -->
+      
    
     
-</div>
+<script>
+    app.json
+</script>
     
 </body>
 </html>

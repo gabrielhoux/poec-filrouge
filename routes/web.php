@@ -5,6 +5,7 @@ use App\Http\Controllers\RecetteController;
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,5 +28,7 @@ Route::get('/', function () {
 Route::get("/fromIngredient", [RecetteController::class, "form"])
     ->name("fromIngredient");
 
-Route::get("/Afichagerecette", [RecetteController::class, "Affichage"])
-    ->name("Afichage recette");
+Route::get('/recette', [RecetteController::class, 'afficher']);
+
+
+   

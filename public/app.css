@@ -1,0 +1,42 @@
+
+
+.liste {
+    display: flex;
+    justify-content: row;
+    width: 40%;
+    height:30%;
+    padding-top: 40px;
+    display: flex;
+    
+    background-color: #747070;
+}
+
+/*.cal{
+    display: flex;
+    flex-direction: row;
+   align-items: center;
+    background-color: #b5b2b2;
+    width: 70px;
+    height: 30px;
+}*/
+
+.gte{
+    display: right;
+    flex-direction: row;
+    background-color: #b5b2b2;
+    width: 70px;
+    height: 30px;
+}
+
+.miame{
+  
+    width: 80%;
+    height: 30%;
+}
+body {
+   
+    margin-left: 30px;
+    width: 90%;
+    background-color: #ffff
+    ;
+}
