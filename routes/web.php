@@ -26,3 +26,6 @@ Route::get('/', function () {
 
 Route::get("/fromIngredient", [RecetteController::class, "form"])
     ->name("fromIngredient");
+
+Route::get("/Afichagerecette", [RecetteController::class, "Affichage"])
+    ->name("Afichage recette");
