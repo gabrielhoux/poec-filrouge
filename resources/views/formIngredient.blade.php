@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ingredient</title>
-    </head>
-    <body>
-
         <div class="container">
             <h1>Nouvel ingrédient</h1>
             <form method="post">
@@ -37,7 +28,4 @@
                 <option value="boisson">Boisson</option>
             </select>
         </div>
-
-    </body>
-</html>
 

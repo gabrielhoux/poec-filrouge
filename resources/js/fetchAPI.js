@@ -1,15 +1,15 @@
 // Import du fichier .env
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config()
 
 // Import de la bibliothèque OpenAI
 import OpenAI from "openai";
 
 // Récupération de la clé API, stockée dans la variable API_KEY du fichier .env
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.OPENAI_API_KEY;
 
 // Récupération de l'ID de l'API Assistant ChatGPT dans la variable ASSISTANT_ID du fichier .env
-const assistantId = process.env.ASSISTANT_ID;
+const assistantId = process.env.OPENAI_ASSISTANT_ID;
 
 // Initialisation d'OpenAI avec la clé API et autorisation de l'utilisation dans le navigateur
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
@@ -53,26 +53,41 @@ function formatRecipe(rawRecipe) {
   return formatted;
 };
 
-// Fonction asynchrone pour interagir avec l'API Assistant d'OpenAI pour des recettes retournées en JSON
-async function fetchRecipe(prompt) {
-  const thread = await openai.beta.threads.create();
+//
 
-  const message = await openai.beta.threads.messages.create(
-    thread.id,
-    {
-      role: "user",
-      content: prompt
-    }
-  );
+async function createThreadAndRun(assistantId, prompt) {
+  const run = await openai.beta.threads.createAndRun({
+    assistant_id: assistantId,
+    thread: {
+      messages: [
+        { role: "user", content: prompt },
+      ],
+    },
+  });
 
-  const run = await openai.beta.threads.runs.create(
-    thread.id,
-    { 
-      assistant_id: assistantId,
-    }
-  );
-
-  const messages = await openai.beta.threads.messages.list(
-    thread.id
-  );
+  console.log(run["thread_id"]);
 }
+
+const threadId = "thread_mokZvb4AoS4zK6ENWZzegUAy";
+
+async function listMessage(threadId) {
+  const threadMessages = await openai.beta.threads.messages.list(
+    threadId
+  );
+
+  const messageIndex = threadMessages.data.length - 1;
+
+  const messageText = threadMessages.data[messageIndex].content[0].text.value;
+
+  console.log(messageText);
+
+}
+
+//createThreadAndRun(assistantId, prompt);
+listMessage(threadId);
+
+
+
+
+
+
