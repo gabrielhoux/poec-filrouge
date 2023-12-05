@@ -20,7 +20,8 @@ const ingredients = ["farine", "œufs", "lait", "sucre"];
 // Construction du prompt pour demander une recette basée sur les ingrédients fournis
 const prompt = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}`;
 
-// Fonction asynchrone pour interagir avec l'API OpenAI
+
+// Fonction asynchrone pour interagir avec l'API OpenAI de base
 async function fetchOpenAI(prompt) {
   try {
     // Création d'une requête à l'aide du modèle chat de OpenAI
@@ -46,13 +47,13 @@ async function fetchOpenAI(prompt) {
     return null;
   }
 }
-
 // Fonction pour formater la recette en ajoutant des retours à la ligne devant les numéros des étapes
 function formatRecipe(rawRecipe) {
   const formatted = rawRecipe.replace(/(\d+\.\s)/g, "\n$&");
   return formatted;
 };
 
+// Fonction asynchrone pour interagir avec l'API Assistant d'OpenAI pour des recettes retournées en JSON
 async function fetchRecipe(prompt) {
   const thread = await openai.beta.threads.create();
 
