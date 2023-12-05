@@ -18,3 +18,5 @@ yarn-error.log
 /.idea
 /.vscode
 function_call.json
+threadmessages.json
+recette_exemple.json
