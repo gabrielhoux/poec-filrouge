@@ -19,14 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route d'accès à la clé API
-Route::get('/api/openai-key', function () {
-    return response()->json([
-        'apiKey' => env('OPENAI_API_KEY'),
-    ]);
-});
-
-
 // Routes d'accès aux ingrédients
 Route::get('/ingredients', [IngredientController::class, 'index']);
 Route::post('/ingredients', [IngredientController::class, 'store']);
