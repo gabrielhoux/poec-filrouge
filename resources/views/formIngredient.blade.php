@@ -52,14 +52,14 @@
           <label class="label">Nombre de portions</label>
           <div class="field is-grouped">
               <div class="control">
-                <input id="portion-input" class="input" type="number" min="0">
+                <input id="portion-input" class="input is-rounded" type="number" min="0">
               </div>
           </div>
       </div>
 
       <div class="field">
         <label class="label" for="tempsPreparation">Temps de préparation</label>
-        <input class="input" type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
+        <input class="input is-rounded" type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
         <span> minutes</span>
       </div>
 
