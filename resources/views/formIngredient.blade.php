@@ -22,7 +22,7 @@
           <label class="label">Régime</label>
           <div class="control">
             <div class="select is-rounded">
-              <select aria-label="select-regime">
+              <select aria-label="select-regime" id="regimeSelect">
                   <option value="">Sélectionner</option>
                   <option value="végé">Végétarien</option>
                   <option value="vegan">Vegan</option>
@@ -36,7 +36,7 @@
           <label class="label">Type de plat</label>
           <div class="control">
             <div class="select is-rounded">
-              <select aria-label="select-type">
+              <select aria-label="select-type" id="typeSelect">
                   <option value="">Sélectionner</option>
                   <option value="aperitif">Apéritif</option>
                   <option value="entree">Entrée</option>
