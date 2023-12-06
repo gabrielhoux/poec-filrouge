@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/main.js'])
 </head>
 <body>
-    <section class="section is-large">
+    <section class="section is-medium">
         <h1 class="title">M•IA•M</h1>
         <h2 class="subtitle">
           Besoin d'une <strong>recette</strong> ?
