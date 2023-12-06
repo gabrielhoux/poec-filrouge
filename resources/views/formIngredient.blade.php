@@ -1,53 +1,80 @@
-    <div class="container">
-        <h1>Nouvel ingrédient</h1>
-        <form method="post">
-            @csrf
-            <input id="name" name="name" type="text" placeholder="Ajouter votre ingrédient" required/>
-            <button type="submit">Ajouter</button>
-        </form>
-    </div>
+<div class="container is-fluid">
+    <form method="post">
+    @csrf
+        <div class="field">
+            <label class="label">Ingrédient</label>
+            <div class="control">
+              <input id="ingredient-input" class="input is-focused" type="text" placeholder="Pâtes, oeuf, ...">
+            </div>
+        </div>
 
-    <div class="container">
-        <select class="form-select" aria-label="Régime">
-            <option selected>Régime</option>
-            <option value="végé">végé</option>
-            <option value="vegan">vegan</option>
-            <option value="omni">Omni</option>
-            <option value="pesca">pesca</option>
-        </select>
-    </div>
-    <br>
+        <div class="field">
+            <label class="label">Régime</label>
+            <div class="control">
+              <div class="select">
+                <select>
+                    <option value="">Sélectionner</option>
+                    <option value="végé">végé</option>
+                    <option value="vegan">vegan</option>
+                    <option value="omni">Omni</option>
+                    <option value="pesca">pesca</option>
+                </select>
+              </div>
+            </div>
+        </div>
 
-    <div class="container">
-        <select class="form-select" aria-label="Catégories">
-            <option selected>Catégories</option>
-            <option value="Apéritif">Apéritifs</option>
-            <option value="entrée">Entrées</option>
-            <option value="plat">Plats</option>
-            <option value="Dessert">Desserts</option>
-            <option value="BOISSON">Boissons</option>
-        </select>
-    </div>
-    <br>
+        <div class="field">
+            <label class="label">Type de plat</label>
+            <div class="control">
+              <div class="select">
+                <select>
+                    <option selected>Sélectionner</option>
+                    <option value="aperitif">Apéritif</option>
+                    <option value="entree">Entrée</option>
+                    <option value="plat">Plat</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="boisson">Boisson</option>
+                </select>
+              </div>
+            </div>
+        </div>
 
-    <div class="container">
-        <div><span>Nombre de portions </span></div>
-        <button onclick="decrement()">-</button>
-        <span id="counter">0</span>
-        <button onclick="increment()">+</button>
-    </div>
+        <div class="field">
+            <label class="label">Nombre de portions</label>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary" onclick="decrement()">-</button>
+                </div>
+                <div class="control">
+                    <button class="button is-white">1</button>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" onclick="increment()">+</button>
+                </div>
+            </div>
+        </div>
 
-    <form action="traitement.php" method="post">
-        <div class="container">
+        <div class="field">
             <label for="tempsPreparation">Temps de préparation :</label>
             <input type="number" id="tempsPreparation" name="tempsPreparation" placeholder="Entrez le temps de préparation" min="0" step="5" required>
             <span> minutes</span>
         </div>
 
-        <div class="container">
-            <input type="checkbox" id="moinsCalorique" name="moinsCalorique">
-            <label for="moinsCalorique">Moins calorique</label>
-        </div>
+        <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox">
+                Léger
+              </label>
+            </div>
+          </div>
 
-        <input type="submit" value="Envoyer">
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link">Valider</button>
+            </div>
+            <div class="control">
+              <button class="button is-link is-light">Annuler</button>
+            </div>
+          </div>
     </form>
