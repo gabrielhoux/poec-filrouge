@@ -1,6 +1,12 @@
 <!-- Bannière de cookies -->
 <div class="cookies-banner" id="cookiesBanner">
-    <p>Ce site utilise des cookies. Acceptez-vous leur utilisation ?</p>
-    <button class="cookies-btn">Accepter</button>
-    <button class="cookies-btn">Refuser</button>
+
+    <div class="content">
+
+        <p>Ce site utilise des <b>cookies</b>. Acceptez-vous leur utilisation ?</p>
+
+        <button class="cookies-btn button is-primary">Accepter</button>
+        <button class="cookies-btn button is-light">Refuser</button>
+
+    </div>
 </div>
