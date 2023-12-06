@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get("/fromIngredient", [RecetteController::class, "form"])
-    ->name("fromIngredient");
+Route::get("/formIngredient", [RecetteController::class, "form"])
+    ->name("formIngredient");
 
 Route::get('/recette', [RecetteController::class, 'afficher']);
 
