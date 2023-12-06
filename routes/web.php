@@ -20,6 +20,13 @@ Route::get('/', function () {
     return view('main');
 });
 
+// Route d'accès à la clé API
+Route::get('/api/openai-key', function () {
+    return response()->json([
+        'apiKey' => env('OPENAI_API_KEY'),
+    ]);
+});
+
 Route::get("/formIngredient", [RecetteController::class, "form"])
     ->name("formIngredient");
 
