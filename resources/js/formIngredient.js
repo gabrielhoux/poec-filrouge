@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+    
+
     // Gérer la soumission du formulaire
     const form = document.getElementById('ingredient-form');
     form.addEventListener('submit', (event) => {
@@ -27,5 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const ingredients = [...ingredientList.querySelectorAll('li')].map(li => li.textContent);
         console.log(ingredients); // Affiche les ingrédients à soumettre (remplacez par l'envoi AJAX ou la manipulation des données)
         // Soumettre les données via AJAX ou manipuler les données ici
+        const selectedRegime = document.getElementById('regimeSelect').value;
+        const selectedType = document.getElementById('typeSelect').value;
+        const nbreProtions = document.getElementById('typeSelect').value;
+
+        console.log('Regime sélectionné :', selectedRegime);
+        console.log('Regime sélectionné :', selectedType);
     });
+
+    
+
 });
+
+
+
