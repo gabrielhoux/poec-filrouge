@@ -1,17 +1,22 @@
 <div class="container is-fluid">
   <form id="ingredient-form" method="post">
   @csrf
-    <div class="field">
-      <label class="label">Ingrédients</label>
-      <div class="control">
-          <input id="ingredient-input" class="input is-focused" type="text" placeholder="Pâtes, oeuf, ...">
-          <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
-      </div>
-  </div>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Ingrédients</label>
+          <div class="control">
+              <input id="ingredient-input" class="input is-focused" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
+              <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
+          </div>
+        </div>
 
-  <div class="field">
-      <ul id="ingredient-list"></ul>
-  </div>
+        <div class="field">
+          <ul id="ingredient-list"></ul>
+        </div>
+
+      </div>
+     
 
   <div class="field">
       <label class="label">Régime</label>
@@ -25,7 +30,6 @@
           </select>
         </div>
       </div>
-  </div>
 
   <div class="field">
       <label class="label">Type de plat</label>
