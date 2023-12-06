@@ -1,6 +1,7 @@
 // Import de la bibliothèque OpenAI
 import OpenAI from "openai";
 
+// Initialisation des variables pour utiliser l'API OpenAI
 const assistantId = "asst_ISGtoQnIZkGJ9tCm2wICRLis";
 const apiKey = await fetchOpenAIKey();
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
@@ -8,7 +9,7 @@ const threadId = "thread_mokZvb4AoS4zK6ENWZzegUAy";
 
 async function fetchOpenAIKey() {
   try {
-    const response = await fetch('/api/openai-key');
+    const response = await fetch(`/api/openai-key`);
     const data = await response.json();
 
     return data.apiKey;
@@ -52,7 +53,7 @@ async function listMessage(threadId) {
 }
 
 //createThreadAndRun(assistantId, prompt);
-listMessage(threadId);
+//listMessage(threadId);
 
 
 
