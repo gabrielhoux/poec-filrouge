@@ -17,7 +17,7 @@
       <label class="label">Régime</label>
       <div class="control">
         <div class="select">
-          <select aria-label="select-regime">
+          <select aria-label="select-regime" id="regimeSelect" >
               <option value="">Sélectionner</option>
               <option value="végé">Végétarien</option>
               <option value="vegan">Vegan</option>
@@ -31,7 +31,7 @@
       <label class="label">Type de plat</label>
       <div class="control">
         <div class="select">
-          <select aria-label="select-type">
+          <select aria-label="select-type" id="typeSelect">
               <option selected>Sélectionner</option>
               <option value="aperitif">Apéritif</option>
               <option value="entree">Entrée</option>
@@ -49,8 +49,8 @@
           <div class="control">
               <button type="button" class="button is-primary" onclick="decrement()">-</button>
           </div>
-          <div class="control">
-              <button class="button is-white" disabled><strong>1</strong></button>
+          <div class="control" >
+              <button class="button is-white" disabled ><strong>1</strong></button>
           </div>
           <div class="control">
               <button type="button" class="button is-primary" onclick="increment()">+</button>
