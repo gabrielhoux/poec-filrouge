@@ -6,7 +6,7 @@
         <div class="field">
           <label class="label">Ingrédients</label>
           <div class="control">
-              <input id="ingredient-input" class="input is-focused" type="text" placeholder="Pâtes, oeuf, ...">
+              <input id="ingredient-input" class="input is-focused" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
               <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
           </div>
         </div>
@@ -21,7 +21,7 @@
         <div class="field">
           <label class="label">Régime</label>
           <div class="control">
-            <div class="select">
+            <div class="select is-rounded">
               <select aria-label="select-regime">
                   <option value="">Sélectionner</option>
                   <option value="végé">Végétarien</option>
@@ -35,9 +35,9 @@
       <div class="field">
           <label class="label">Type de plat</label>
           <div class="control">
-            <div class="select">
+            <div class="select is-rounded">
               <select aria-label="select-type">
-                  <option selected>Sélectionner</option>
+                  <option value="">Sélectionner</option>
                   <option value="aperitif">Apéritif</option>
                   <option value="entree">Entrée</option>
                   <option value="plat">Plat</option>
@@ -52,20 +52,14 @@
           <label class="label">Nombre de portions</label>
           <div class="field is-grouped">
               <div class="control">
-                  <button type="button" class="button is-primary" onclick="decrement()">-</button>
-              </div>
-              <div class="control">
-                  <button class="button is-white" disabled><strong>1</strong></button>
-              </div>
-              <div class="control">
-                  <button type="button" class="button is-primary" onclick="increment()">+</button>
+                <input id="portion-input" class="input" type="number" min="0">
               </div>
           </div>
       </div>
 
       <div class="field">
         <label class="label" for="tempsPreparation">Temps de préparation</label>
-        <input type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
+        <input class="input" type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
         <span> minutes</span>
       </div>
 
