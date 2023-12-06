@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.remove();
         }
     });
+ 
+    
 
     // Gérer la soumission du formulaire
     const form = document.getElementById('ingredient-form');
