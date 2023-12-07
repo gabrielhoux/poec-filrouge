@@ -24,23 +24,24 @@ async function fetchImage()
     const imgContainer = document.getElementById('imgContainer');
     while (imgContainer.firstChild && imgContainer.removeChild(imgContainer.firstChild));
 
-    const recipeTitle = document.getElementById('recipeTitle');
+    const recipeTitle = document.getElementById('recipeTitle').innerHTML;
 
     const credentials = await fetchSearchAPICredentials();
     const apiKey = credentials.apiKey;
     const searchEngineId = credentials.searchEngineId;
-    const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&q=${recipeTitle}&searchType=image`
+    const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&searchType=image&cx=${searchEngineId}&q=${recipeTitle}`
 
     try {
         const response = await axios.get(apiUrl);
-        const data = response.json();
-        const firstImageURL = data.items[0].link;
+        const firstImageURL = response.data.items[0].link;
+
+        console.log(response);
 
         const img = document.createElement('img');
         img.src = firstImageURL;
         imgContainer.appendChild(img);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
 
 }
