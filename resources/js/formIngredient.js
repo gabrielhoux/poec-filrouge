@@ -32,10 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
         const selectedType = document.getElementById('typeSelect').value;
-        const nbreProtions = document.getElementById('typeSelect').value;
+        const portionnbre = document.getElementById('portion-input').value;
+        const tempsPreparation = document.getElementById('temps-preparation').value;
 
         console.log('Regime sélectionné :', selectedRegime);
-        console.log('Regime sélectionné :', selectedType);
+        console.log('type sélectionné :', selectedType);
+        console.log('nombre de portion :', portionnbre);
+        console.log('temps de Preparation est :', tempsPreparation ,'minute');
+        form.reset();
     });
 
     
