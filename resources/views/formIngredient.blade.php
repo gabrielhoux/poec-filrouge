@@ -6,7 +6,7 @@
         <div class="field">
           <label class="label">Ingrédients</label>
           <div class="control">
-              <input id="ingredient-input" class="input is-focused" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
+              <input id="ingredient-input" class="input is-focused" pattern="[A-Za-z\s]+" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
               <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
           </div>
         </div>
