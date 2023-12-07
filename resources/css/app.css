@@ -18,3 +18,7 @@
 #temps-preparation {
     max-width: 60px;
 }
+
+.imgRecipe {
+    object-fit: cover;
+}
