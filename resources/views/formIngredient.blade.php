@@ -63,7 +63,7 @@
   <div class="field">
       <div class="control">
         <label class="checkbox">
-          <input type="checkbox" id="Léger">
+          <input type="checkbox" id="legerCheckbox">
           Léger
         </label>
       </div>
@@ -74,7 +74,7 @@
         <button class="button is-link">Valider</button>
       </div>
       <div class="control">
-        <button class="button is-link is-light">Annuler</button>
+        <button class="button is-link is-light" id='cancelButton'>Annuler</button>
       </div>
     </div>
   </form>
