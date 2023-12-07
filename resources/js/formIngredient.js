@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const nbrePortions = document.getElementById('portion-input').value;
 
         console.log('Regime sélectionné :', selectedRegime);
-        console.log('Regime sélectionné :', selectedType);
-        console.log('Regime sélectionné :', nbrePortions);
+        console.log('Type sélectionné :', selectedType);
+        console.log('Nombre de portions sélectionné :', nbrePortions);
     });
 
     
