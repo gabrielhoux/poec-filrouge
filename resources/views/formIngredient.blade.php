@@ -63,7 +63,7 @@
   <div class="field">
       <div class="control">
         <label class="checkbox">
-          <input type="checkbox">
+          <input type="checkbox" id="Léger">
           Léger
         </label>
       </div>

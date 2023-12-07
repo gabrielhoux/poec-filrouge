@@ -34,11 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedType = document.getElementById('typeSelect').value;
         const portionnbre = document.getElementById('portion-input').value;
         const tempsPreparation = document.getElementById('temps-preparation').value;
+        //const checkbox = document.getElementById('Léger').value;
 
         console.log('Regime sélectionné :', selectedRegime);
         console.log('type sélectionné :', selectedType);
         console.log('nombre de portion :', portionnbre);
         console.log('temps de Preparation est :', tempsPreparation ,'minute');
+        //console.log('Rcheckbox leger est coché  :', checkbox);
         form.reset();
     });
 
