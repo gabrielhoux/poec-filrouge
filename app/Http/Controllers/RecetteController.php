@@ -6,15 +6,46 @@ use Illuminate\Http\Request;
 
 class RecetteController extends Controller
 {
+    
+public function sendData()
+{
+    $data = json_decode(file_get_contents('chemin/vers/ton_fichier.json'), true);
+
+    $response = Http::post('http://recette.com/endpoint', $data);
+
+    return $response->json();
+}
+/*
+    const url = 'votre_url/recette';
+    const donnees = {
+      parametre1: 'valeur1',
+      parametre2: 'valeur2',
+      // Ajoutez d'autres paramètres selon vos besoins
+    };
+    
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Assurez-vous d'ajuster le type de contenu en fonction de ce que le serveur attend
+      },
+      body: JSON.stringify(donnees),
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Erreur :', error));
+    
+
     public function form()
     {
         return view("fromIngredient");
     }
-
+*/
     public function afficher(Request $request)
     {
-        //$donnees = $request->all(); // Récupère toutes les données envoyées
 
+       
+
+       
         $donnees = [
             "titre"  => "Crêpes sucrées",
             "ingredients" => [
@@ -43,6 +74,21 @@ class RecetteController extends Controller
 
         return view('recette', ['donnees'  => $donnees]); // Transmet les données à la vue
     }
+
+    public function afficher2(Request $request)
+    {
+
+       
+
+        $donnees = $request->all(); // Récupère toutes les données envoyées
+
+      
+
+        return view('recette', ['donnees'  => $donnees]); // Transmet les données à la vue
+    }
+
+
+
 
 
 }

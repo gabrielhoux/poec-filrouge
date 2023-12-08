@@ -31,14 +31,9 @@ Route::get("/formIngredient", [RecetteController::class, "form"])
     ->name("formIngredient");
 
 Route::get('/recette', [RecetteController::class, 'afficher']);
+Route::post('/recette2', [RecetteController::class, 'afficher2']);
 
 
 
-/*Route::post('/traiter-formulaire', [FormController::class, 'recette']);
 
 
-Route::get('/traiter-formulaire', function () {
-    return view('traiter-formulaire');
-});
-
-Route::post('/votre-route-laravel', 'RecetteController@traiterRecette');*/
