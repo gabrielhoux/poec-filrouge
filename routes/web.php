@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecetteController;
+use App\Http\Controllers\IngredientController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -35,8 +36,17 @@ Route::get('/api/customsearch-key', function () {
     ]);
 });
 
-Route::get("/formIngredient", [RecetteController::class, "form"])
-    ->name("formIngredient");
+
+//Route::get("/formIngredient", [RecetteController::class, "form"])
+   // ->name("formIngredient");
 
 Route::get('/recette', [RecetteController::class, 'afficher']);
+
+Route::match(['get', 'post'], '/', [IngredientController::class, 'showFormIngredient']);
+
+Route::post('/', [IngredientController::class, 'store']);
+
+
+
+
 
