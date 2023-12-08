@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\RecetteController;
-use App\Http\Controllers\IngredientController;
-
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', [RecetteController::class, 'form'])->name('form');
 
 // Route d'accès à la clé API OpenAI
 Route::get('/api/openai-key', function () {
@@ -35,16 +30,6 @@ Route::get('/api/customsearch-key', function () {
         'searchEngineId' => env('SEARCH_ENGINE_ID')
     ]);
 });
-
-
-//Route::get("/formIngredient", [RecetteController::class, "form"])
-   // ->name("formIngredient");
-
-Route::get('/recette', [RecetteController::class, 'afficher']);
-
-Route::match(['get', 'post'], '/', [IngredientController::class, 'showFormIngredient']);
-
-Route::post('/', [IngredientController::class, 'store']);
 
 
 
