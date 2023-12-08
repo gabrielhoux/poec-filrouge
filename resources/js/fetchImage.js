@@ -2,25 +2,24 @@ import axios from 'axios'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    fetchImage();
+    //fetchImage();
 
 })
 
 async function fetchSearchAPICredentials() {
-    try {
-      const response = await fetch(`/api/customsearch-key`);
-      const data = await response.json();
-  
-      return data;
-  
-    } catch (error) {
-      console.error(error);
-    }
+  try {
+    const response = await axios(`http://localhost:8000/api/customsearch-key`);
+    const data = response.data;
+
+    return data;
+
+  } catch (error) {
+    console.error(error);
+  }
   }
 
 async function fetchImage()
 {
-
     const imgContainer = document.getElementById('imgContainer');
     while (imgContainer.firstChild && imgContainer.removeChild(imgContainer.firstChild));
 
@@ -30,7 +29,7 @@ async function fetchImage()
     const apiKey = credentials.apiKey;
     const searchEngineId = credentials.searchEngineId;
     const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&searchType=image&cx=${searchEngineId}&q=${recipeTitle}`
-
+    
     try {
         const response = await axios.get(apiUrl);
         const firstImageURL = response.data.items[0].link;
@@ -43,5 +42,4 @@ async function fetchImage()
       } catch (error) {
         console.log(error);
       }
-
 }

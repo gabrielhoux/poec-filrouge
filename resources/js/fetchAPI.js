@@ -77,7 +77,7 @@ async function main() {
   }
 }
 
-main();
+
 
 
 
