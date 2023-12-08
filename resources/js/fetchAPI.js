@@ -6,7 +6,6 @@ import axios from "axios";
 const assistantId = "asst_ISGtoQnIZkGJ9tCm2wICRLis";
 const apiKey = await fetchOpenAIKey();
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
-const threadId = "thread_SJ4wEygT9nSeORG20JColjiN";
 
 async function fetchOpenAIKey() {
   try {
@@ -40,20 +39,6 @@ async function getAnswer(assistantId, thread) {
       thread.id,
       { assistant_id: assistantId }
     );
-
-/*     while (true) {
-      const runInfo = await openai.beta.threads.runs.retrieve(
-        thread.id,
-        run.id
-      );
-      
-      if (runInfo.status === "completed") {
-        console.log("Run completed");
-        break;
-      }
-      console.log("Waiting 10sec...");
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-    } */
 
     console.log("Waiting 60sec...");
     await new Promise((resolve) => setTimeout(resolve, 60000));
