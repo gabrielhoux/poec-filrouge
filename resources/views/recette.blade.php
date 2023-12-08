@@ -44,26 +44,32 @@
                             </div>
                         </div>
                     </nav>
-                    <h2 class="subtitle">Ingrédients</h2>
-                    <ul>
-                        @foreach($donnees['ingredients'] as $ingredient)
-                        <li>{{ $ingredient }}</li>
-                        @endforeach
-                    </ul>
-                    <h2 class="subtitle">Instructions</h2> 
-                    <ol>
-                        @foreach($donnees['instructions'] as $instruction)
-                        <li>{{ $instruction }}</li>
-                        @endforeach
-                    </ol>
+                    <div class="columns">
+                        <div class="column is two-third">
+                            <h2 class="subtitle has-text-centered">Instructions</h2> 
+                            <ol>
+                                @foreach($donnees['instructions'] as $instruction)
+                                <li>{{ $instruction }}</li>
+                                @endforeach
+                            </ol>
+                        </div>
+                        <div class="column is-one-third">
+                            <h2 class="subtitle has-text-centered">Ingrédients</h2>
+                            <ul>
+                                @foreach($donnees['ingredients'] as $ingredient)
+                                <li>{{ $ingredient }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 
                 </div>
 
             </div>
 
             <div class="column is-one-third">
-                <figure id="imgContainer" class="image is-2by3">
-                    <img class="imgRecipe" src="https://img.lemde.fr/2022/02/10/145/184/1183/788/1440/960/60/0/711057b_169085-3259764.jpg">
+                <figure id="imgContainer" class="image is-1by2">
+                    <img class="imgRecipe" src="https://assets.afcdn.com/recipe/20211122/124598_w1024h768c1cx3176cy2107cxt1161cyt477cxb5347cyb3565.jpg">
                 </figure>
             </div>
     </div>
