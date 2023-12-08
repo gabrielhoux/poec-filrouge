@@ -8,6 +8,7 @@ class RecetteController extends Controller
 {
     public function form()
     {
+        
         return view("fromIngredient");
     }
 

@@ -23,7 +23,7 @@ Route::get('/', function () {
 // Route d'accès à la clé API OpenAI
 Route::get('/api/openai-key', function () {
     return response()->json([
-        'apiKey' => env('OPENAI_API_KEY'),
+        'apiKey' => env('OPENAI_API_KEY')
     ]);
 });
 
