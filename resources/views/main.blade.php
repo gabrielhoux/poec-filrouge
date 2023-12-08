@@ -15,7 +15,13 @@
           Besoin d'une <strong>recette</strong> ?
         </h2>
 
-        @include('formIngredient')
+        <div id="formulaire">
+            @include('formIngredient')
+        </div>
+
+        <div id="recette">
+        </div>
+        
     </section>
     <footer class="footer">
         @include('cookiesFooter')
