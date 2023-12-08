@@ -54,13 +54,14 @@ async function getAnswer(assistantId, thread) {
   }
 }
 
-async function main() {
+export async function sendDataToAPI(data) {
   try {
     const thread = await openai.beta.threads.create();
     console.log("Created thread with id:", thread.id);
   
     // Exemple de liste d'ingrédients pour la recette
-    const ingredients = ["beurre", "épinards", "pâtes", "cumin"];
+    //const ingredients = ["beurre", "épinards", "pâtes", "cumin"];
+    const ingredients = data.ingredients;
 
     // Construction du prompt pour demander une recette basée sur les ingrédients fournis
     const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}`;
@@ -73,7 +74,7 @@ async function main() {
   
     console.log("Thanks and happy to serve you");
   } catch (error) {
-    console.error('Error in main:', error);
+    console.error('Error in main: ', error);
   }
 }
 

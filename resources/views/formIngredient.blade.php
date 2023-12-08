@@ -14,7 +14,7 @@
 
         <div class="buttons are-small" id="ingredient-buttons">
           @foreach ($ingredients as $ingredient)
-              <button class="ingredient-button button">{{ $ingredient }}</button>
+              <button type="button" class="ingredient-button button">{{ $ingredient }}</button>
           @endforeach
         </div>
 
@@ -82,7 +82,7 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link">Valider</button>
+            <button type="submit" class="button is-link">Valider</button>
           </div>
           <div class="control">
             <button class="button is-link is-light" id='cancelButton'>Annuler</button>
