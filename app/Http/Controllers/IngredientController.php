@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\Validator;
 
 class IngredientController extends Controller
 {
+
+    public function showFormIngredient()
+    {
+        $ingredients = Ingredient::pluck('name')->toArray();
+    
+    
+        return view('main', ['ingredients' => $ingredients]);
+    }
+
+
+
+
+
+
     // Retourne tous les ingrédients
     public function index()
     {
