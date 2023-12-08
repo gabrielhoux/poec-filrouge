@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import axios from "axios";
 
 // Initialisation des variables pour utiliser l'API OpenAI
-const assistantId = "asst_ISGtoQnIZkGJ9tCm2wICRLis";
+const assistantId = "asst_VrRUrECJUPrt9oXsMpG5umi9";
 const apiKey = await fetchOpenAIKey();
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
