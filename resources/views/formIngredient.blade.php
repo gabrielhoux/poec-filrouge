@@ -2,6 +2,7 @@
   <form id="ingredient-form" method="post" action="{{ url('/') }}">
   @csrf
     <div class="columns">
+
       <div class="column">
         <div class="field">
           <label class="label">Ingrédients</label>
@@ -11,17 +12,18 @@
           </div>
         </div>
 
-       <div id="ingredient-buttons">
-    @foreach ($ingredients as $ingredient)
-        <button class="ingredient-button" onclick="handleIngredientClick('{{$ingredient}}')">{{$ingredient}}</button>
-    @endforeach
-</div>
+        <div class="buttons are-small" id="ingredient-buttons">
+          @foreach ($ingredients as $ingredient)
+              <button class="ingredient-button button">{{ $ingredient }}</button>
+          @endforeach
+        </div>
 
         <div class="field">
           <ul id="ingredient-list"></ul>
         </div>
 
       </div>
+
       <div class="column">
 
         <div class="field">
@@ -36,9 +38,9 @@
               </select>
             </div>
           </div>
-      </div>
+        </div>
 
-      <div class="field">
+        <div class="field">
           <label class="label">Type de plat</label>
           <div class="control">
             <div class="select is-rounded">
@@ -52,37 +54,40 @@
               </select>
             </div>
           </div>
-      </div>
+        </div>
 
-      <div class="field">
+        <div class="field">
           <label class="label">Nombre de portions</label>
           <div class="field is-grouped">
               <div class="control">
                 <input id="portion-input" class="input is-rounded" type="number" min="0">
               </div>
           </div>
-      </div>
+        </div>
 
-      <div class="field">
-        <label class="label" for="tempsPreparation">Temps de préparation</label>
-        <input class="input is-rounded" type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
-        <span> minutes</span>
-      </div>
+        <div class="field">
+          <label class="label" for="tempsPreparation">Temps de préparation</label>
+          <input class="input is-rounded" type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
+          <span> minutes</span>
+        </div>
 
-    <div class="field">
-      <div class="control">
-        <label class="checkbox">
-          <input type="checkbox" id="legerCheckbox">
-          <strong>Léger</strong>
-        </label>
-      </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" id="legerCheckbox">
+              <strong>Léger</strong>
+            </label>
+          </div>
+        </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-link">Valider</button>
-      </div>
-      <div class="control">
-        <button class="button is-link is-light" id='cancelButton'>Annuler</button>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Valider</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" id='cancelButton'>Annuler</button>
+          </div>
+        </div>
       </div>
     </div>
   </form>

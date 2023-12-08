@@ -16,7 +16,7 @@
         </h2>
 
         <div id="formulaire">
-            @include('formIngredient')
+            @include('formIngredient', ['ingredients' => $ingredients])
         </div>
 
         <div id="recette">

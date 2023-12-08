@@ -1,14 +1,3 @@
-
-function handleIngredientClick(ingredient) {
-    const li = document.createElement('li');
-    li.textContent = ingredient;
-
-    // Ajouter l'ingrédient à la liste
-    const ingredientList = document.getElementById('ingredient-list');
-    ingredientList.appendChild(li);
-}
-
-let numberOfPortions = 1;
 document.addEventListener('DOMContentLoaded', () => {
     const ingredientInput = document.getElementById('ingredient-input');
     const addIngredientBtn = document.getElementById('add-ingredient');
@@ -25,9 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
-
-
     ingredientButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const ingredient = event.target.textContent;
@@ -35,26 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // Supprimer un ingrédient en cliquant dessus dans la liste
     ingredientList.addEventListener('click', (event) => {
         if (event.target.tagName === 'LI') {
             event.target.remove();
         }
-    });
-
-
-   function handleIngredientClick(ingredient) {
-    const li = document.createElement('li');
-    li.textContent = ingredient;
-
-    // Ajouter l'ingrédient à la liste
-    const ingredientList = document.getElementById('ingredient-list');
-    ingredientList.appendChild(li);
-}
-
-
-    
+    });   
 
     // Gérer la soumission du formulaire
     const form = document.getElementById('ingredient-form');
@@ -68,19 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const portionnbre = document.getElementById('portion-input').value;
         const tempsPreparation = document.getElementById('temps-preparation').value;
         const legerCheckbox = document.getElementById('legerCheckbox');
-        const cancelButton = document.getElementById('cancelButton');
 
         console.log('Regime sélectionné :', selectedRegime);
         console.log('type sélectionné :', selectedType);
         console.log('nombre de portion :', portionnbre);
         console.log('temps de Preparation est :', tempsPreparation ,'minute');
         console.log('legerCheckbox :', legerCheckbox.checked);
-        
       
     });
 
-
-
+    const cancelButton = document.getElementById('cancelButton');
     cancelButton.addEventListener('click', () => {
         // Réinitialiser le formulaire
         form.reset();
@@ -99,11 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Désélectionner la case à cocher "Léger"
         document.getElementById('legerCheckbox').checked = false;
     });
-
-
-   
-
 });
+
+function handleIngredientClick(ingredient) {
+    const li = document.createElement('li');
+    li.textContent = ingredient;
+
+    // Ajouter l'ingrédient à la liste
+    const ingredientList = document.getElementById('ingredient-list');
+    ingredientList.appendChild(li);
+}
 
 
 
