@@ -16,27 +16,46 @@
         <div class="columns">
             <div class="column is-two-third">
 
-                <div class="content">
+                <div class="content is-small">
 
-                    <h1 id="recipeTitle" class="title">{{ $donnees['titre'] }}</h1>
+                    <div class="has-text-centered">
+                        <h1 id="recipeTitle" class="title is-size-2">{{ $donnees['titre'] }}</h1>
+                    </div>
 
-                    <!-- Affichez les autres données ici -->
-                    <div>
-                    <h2>Liste des ingredients</h2>
-                        <ul>
-                            @foreach($donnees['ingredients'] as $ingredient)
-                            <li>{{ $ingredient }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                
-                    <div>
-                        <ol>
-                            @foreach($donnees['instructions'] as $instruction)
-                            <li>{{ $instruction }}</li>
-                            @endforeach
-                        </ol>
-                    </div>
+                    <blockquote class="has-text-centered"><strong>{{ $donnees['description'] }}</strong></blockquote>
+
+                    <nav class="level">
+                        <div class="level-item has-text-centered">
+                            <div>
+                            <p class="title">Poids</p>
+                            <p class="heading">{{ $donnees['poids'] }}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                            <p class="title">Temps</p>
+                            <p class="heading">{{ $donnees['temps'] }}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                            <p class="title">Portions</p>
+                            <p class="heading">{{ $donnees['portions'] }}</p>
+                            </div>
+                        </div>
+                    </nav>
+                    <h2 class="subtitle">Ingrédients</h2>
+                    <ul>
+                        @foreach($donnees['ingredients'] as $ingredient)
+                        <li>{{ $ingredient }}</li>
+                        @endforeach
+                    </ul>
+                    <h2 class="subtitle">Instructions</h2> 
+                    <ol>
+                        @foreach($donnees['instructions'] as $instruction)
+                        <li>{{ $instruction }}</li>
+                        @endforeach
+                    </ol>
                 
                 </div>
 

@@ -11,7 +11,7 @@ async function fetchOpenAIKey() {
   try {
     const response = await axios(`http://localhost:8000/api/openai-key`);
     const apiKey = response.data.apiKey;
-
+    console.log(apiKey);
     return apiKey;
 
   } catch (error) {
@@ -125,6 +125,8 @@ async function sendRecipeToView(recipe) {
 }
 
 
+
+fetchOpenAIKey();
 
 
 
