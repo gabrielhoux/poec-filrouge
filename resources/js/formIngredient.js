@@ -1,10 +1,8 @@
-import { sendDataToAPI } from './fetchAPI.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     const ingredientInput = document.getElementById('ingredient-input');
     const addIngredientBtn = document.getElementById('add-ingredient');
     const ingredientList = document.getElementById('ingredient-list');
-    const ingredientButtons = document.querySelectorAll('.ingredient-button');
+    const ingredientButtons = document.querySelectorAll('#ingredient-button');
 
     addIngredientBtn.addEventListener('click', () => {
         const newIngredient = ingredientInput.value.trim();
@@ -33,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Gérer la soumission du formulaire
     const form = document.getElementById('ingredient-form');
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Empêche la soumission par défaut
-        const ingredients = [...ingredientList.querySelectorAll('ingredient-element')].map(li => li.textContent);
+        const ingredients = [...ingredientList.querySelectorAll('.ingredient-element')].map(li => li.textContent);
         console.log(ingredients); // Affiche les ingrédients à soumettre (remplacez par l'envoi AJAX ou la manipulation des données)
         // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
@@ -58,7 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tempsPreparation !== "0") data.tempsPreparation = tempsPreparation;
         if (legerCheckbox.checked) data.legerCheckbox = true;
 
-        sendDataToAPI(data);
+        try {
+            // Envoi des données à la fonction main
+            const { sendDataToAPI } = await import('./fetchAPI.js');
+            await sendDataToAPI(data);
+        } catch (error) {
+            console.error('Error sending data to main:', error);
+        }
       
     });
 
