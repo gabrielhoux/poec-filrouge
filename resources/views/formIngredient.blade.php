@@ -1,5 +1,5 @@
 <div class="container is-fluid">
-  <form id="ingredient-form" method="post">
+  <form id="ingredient-form" method="post" action="{{ url('/') }}">
   @csrf
     <div class="columns">
       <div class="column">
@@ -10,6 +10,12 @@
               <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
           </div>
         </div>
+
+       <div id="ingredient-buttons">
+    @foreach ($ingredients as $ingredient)
+        <button class="ingredient-button" onclick="handleIngredientClick('{{$ingredient}}')">{{$ingredient}}</button>
+    @endforeach
+</div>
 
         <div class="field">
           <ul id="ingredient-list"></ul>
