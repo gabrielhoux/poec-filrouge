@@ -25,7 +25,7 @@ async function addMessageToThread(threadId, userQuestion) {
       threadId,
       { role: "user", content: userQuestion }
     );
-    return message;
+    console.log(message);
   } catch (error) {
     console.error('Error adding message to thread:', error);
   }
@@ -40,15 +40,33 @@ async function getAnswer(assistantId, thread) {
       { assistant_id: assistantId }
     );
 
-    console.log("Waiting 60sec...");
-    await new Promise((resolve) => setTimeout(resolve, 60000));
+    while (true) 
+    {
+      const runInfo = await openai.beta.threads.runs.retrieve(
+        thread.id,
+        run.id
+      );
+      
+      if (runInfo.status === "completed") {
+        console.log("Run completed");
+        break;
+      }
+
+      console.log(runInfo.status);
+      console.log("Waiting 30sec...");
+      await new Promise((resolve) => setTimeout(resolve, 30000));
+    }
 
     console.log(run);
 
     console.log("All done...");
     const messages = await openai.beta.threads.messages.list(thread.id);
     const messageContent = messages.data[0].content[0].text.value;
-    return messageContent;
+    const extractedJSON = messageContent.match(/{[^}]+}/);
+    const jsonString = extractedJSON[0];
+    const jsonObject = JSON.parse(jsonString);
+
+    return jsonObject;
   } catch (error) {
     console.error('Error getting answer:', error);
   }
@@ -66,15 +84,43 @@ export async function sendDataToAPI(data) {
     // Construction du prompt pour demander une recette basée sur les ingrédients fournis
     const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}`;
 
+    console.log(question);
+
     await addMessageToThread(thread.id, question);
-    const messageContent = await getAnswer(assistantId, thread);
+    const recipe = await getAnswer(assistantId, thread);
     console.log(`FYI, your thread is: ${thread.id}`);
     console.log(`FYI, your assistant is: ${assistantId}`);
-    console.log(messageContent);
+
+    if (recipe == "" || !recipe) {
+      console.log("y a rien");
+    }
+    console.log(recipe);
   
+    sendRecipeToView(recipe)
+
     console.log("Thanks and happy to serve you");
   } catch (error) {
     console.error('Error in main: ', error);
+  }
+}
+
+async function sendRecipeToView(recipe) {
+  try {
+    const formData = new FormData();
+    formData.append('recipe', recipe); // Ajouter la recette au FormData
+
+    // Envoyer les données à la route Laravel via une requête POST avec Axios
+    const response = await axios.post(`http://localhost:8000/recette`, formData);
+
+    if (response.ok) {
+      // Gérer la réponse si nécessaire
+      const responseData = await response.json();
+      console.log('Réponse de la route Laravel :', responseData);
+    } else {
+      console.error("Erreur lors de l'envoi des données à la route Laravel");
+    }
+  } catch (error) {
+    console.error("Erreur lors de l'envoi des données:", error);
   }
 }
 

@@ -15,8 +15,10 @@ class RecetteController extends Controller
     
     public function afficher(Request $request)
     {
-        $donnees = $request->all();
-        return view('recette', ['donnees'  => $donnees]); // Transmet les données à la vue
+        $recipe = $request->input('recipe');
+        return view('recette', ['donnees'  => $recipe]); // Transmet les données à la vue
+    }
+}
 
         // Exemple du format des données
         /*         $donnees = [
@@ -44,7 +46,3 @@ class RecetteController extends Controller
             ],
             "portions" => "4"
         ]; */
-    }
-
-
-}

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RecetteController::class, 'form'])->name('form');
 
-Route::post('/', [RecetteController::class, 'afficher'])->name('afficher');
+Route::post('/recette', [RecetteController::class, 'afficher'])->name('afficher');
 
 // Route d'accès à la clé API OpenAI
 Route::get('/api/openai-key', function () {

@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const newIngredient = ingredientInput.value.trim();
         if (newIngredient !== '') {
             const li = document.createElement('li');
-            li.classList.add('ingredient-element');
             li.textContent = newIngredient.toLowerCase();
             ingredientList.appendChild(li);
             ingredientInput.value = '';
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('ingredient-form');
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Empêche la soumission par défaut
-        const ingredients = [...ingredientList.querySelectorAll('.ingredient-element')].map(li => li.textContent);
+        const ingredients = [...ingredientList.querySelectorAll('li')].map(li => li.textContent);
         console.log(ingredients); // Affiche les ingrédients à soumettre (remplacez par l'envoi AJAX ou la manipulation des données)
         // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
@@ -49,12 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('legerCheckbox :', legerCheckbox.checked);
 
         // Vérification des valeurs optionnelles
-        const data = { ingredients }; // Inclure toujours les ingrédients
+        const data = { "ingredients": ingredients }; // Inclure toujours les ingrédients
         if (selectedRegime !== "") data.selectedRegime = selectedRegime;
         if (selectedType !== "") data.selectedType = selectedType;
         if (portionnbre !== "0") data.portionnbre = portionnbre;
         if (tempsPreparation !== "0") data.tempsPreparation = tempsPreparation;
         if (legerCheckbox.checked) data.legerCheckbox = true;
+
+        console.log(data);
+
+        form.reset();
+        ingredientList.innerHTML = "";
 
         try {
             // Envoi des données à la fonction main
