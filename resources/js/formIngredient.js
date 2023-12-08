@@ -1,3 +1,4 @@
+let numberOfPortions = 1;
 document.addEventListener('DOMContentLoaded', () => {
     const ingredientInput = document.getElementById('ingredient-input');
     const addIngredientBtn = document.getElementById('add-ingredient');
@@ -32,16 +33,52 @@ document.addEventListener('DOMContentLoaded', () => {
         // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
         const selectedType = document.getElementById('typeSelect').value;
-        const nbrePortions = document.getElementById('portion-input').value;
+        const portionnbre = document.getElementById('portion-input').value;
+        const tempsPreparation = document.getElementById('temps-preparation').value;
+        const legerCheckbox = document.getElementById('legerCheckbox');
+        const cancelButton = document.getElementById('cancelButton');
 
         console.log('Regime sélectionné :', selectedRegime);
-        console.log('Type sélectionné :', selectedType);
-        console.log('Nombre de portions sélectionné :', nbrePortions);
+        console.log('type sélectionné :', selectedType);
+        console.log('nombre de portion :', portionnbre);
+        console.log('temps de Preparation est :', tempsPreparation ,'minute');
+        console.log('legerCheckbox :', legerCheckbox.checked);
+        
+      
     });
 
+
+
+    cancelButton.addEventListener('click', () => {
+        // Réinitialiser le formulaire
+        form.reset();
     
+         // Réinitialiser la liste des ingrédients
+        ingredientList.innerHTML  = '';
+    
+        document.getElementById('typeSelect').value = '';
+
+        // Réinitialiser le nombre de portions
+        document.getElementById('portion-input').value = '';
+
+        // Réinitialiser le temps de préparation
+        document.getElementById('temps-preparation').value = '';
+
+        // Désélectionner la case à cocher "Léger"
+        document.getElementById('legerCheckbox').checked = false;
+    });
+
+
+   
 
 });
+
+
+
+
+
+
+
 
 
 
