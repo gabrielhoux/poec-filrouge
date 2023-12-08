@@ -2,13 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientInput = document.getElementById('ingredient-input');
     const addIngredientBtn = document.getElementById('add-ingredient');
     const ingredientList = document.getElementById('ingredient-list');
-    const ingredientButtons = document.querySelectorAll('.ingredient-button');
+    const ingredientButtons = document.querySelectorAll('#ingredient-button');
 
     addIngredientBtn.addEventListener('click', () => {
         const newIngredient = ingredientInput.value.trim();
         if (newIngredient !== '') {
             const li = document.createElement('li');
-            li.textContent = newIngredient;
+            li.classList.add('ingredient-element');
+            li.textContent = newIngredient.toLowerCase();
             ingredientList.appendChild(li);
             ingredientInput.value = '';
         }
@@ -30,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Gérer la soumission du formulaire
     const form = document.getElementById('ingredient-form');
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Empêche la soumission par défaut
-        const ingredients = [...ingredientList.querySelectorAll('li')].map(li => li.textContent);
+        const ingredients = [...ingredientList.querySelectorAll('.ingredient-element')].map(li => li.textContent);
         console.log(ingredients); // Affiche les ingrédients à soumettre (remplacez par l'envoi AJAX ou la manipulation des données)
         // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
@@ -46,6 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('nombre de portion :', portionnbre);
         console.log('temps de Preparation est :', tempsPreparation ,'minute');
         console.log('legerCheckbox :', legerCheckbox.checked);
+
+        // Vérification des valeurs optionnelles
+        const data = { ingredients }; // Inclure toujours les ingrédients
+        if (selectedRegime !== "") data.selectedRegime = selectedRegime;
+        if (selectedType !== "") data.selectedType = selectedType;
+        if (portionnbre !== "0") data.portionnbre = portionnbre;
+        if (tempsPreparation !== "0") data.tempsPreparation = tempsPreparation;
+        if (legerCheckbox.checked) data.legerCheckbox = true;
+
+        try {
+            // Envoi des données à la fonction main
+            const { sendDataToAPI } = await import('./fetchAPI.js');
+            await sendDataToAPI(data);
+        } catch (error) {
+            console.error('Error sending data to main:', error);
+        }
       
     });
 

@@ -15,9 +15,11 @@ class RecetteController extends Controller
     
     public function afficher(Request $request)
     {
-        //$donnees = $request->all(); // Récupère toutes les données envoyées
+        $donnees = $request->all();
+        return view('recette', ['donnees'  => $donnees]); // Transmet les données à la vue
 
-        $donnees = [
+        // Exemple du format des données
+        /*         $donnees = [
             "titre"  => "Crêpes sucrées",
             "ingredients" => [
                 "farine",
@@ -41,9 +43,7 @@ class RecetteController extends Controller
                 "Servez les crêpes saupoudrées de sucre ou avec votre garniture préférée."
             ],
             "portions" => "4"
-        ];
-
-        return view('recette', ['donnees'  => $donnees]); // Transmet les données à la vue
+        ]; */
     }
 
 

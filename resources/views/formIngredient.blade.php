@@ -1,11 +1,11 @@
 <div class="container is-fluid">
-  <form id="ingredient-form" method="post" action="{{ url('/') }}">
+  <form id="ingredient-form" method="post">
   @csrf
     <div class="columns">
 
       <div class="column">
         <div class="field">
-          <label class="label">Ingrédients</label>
+          <label for="ingredient-input" class="label">Ingrédients</label>
           <div class="control">
               <input id="ingredient-input" class="input is-focused" pattern="[A-Za-z\s]+" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
               <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
@@ -14,7 +14,7 @@
 
         <div class="buttons are-small" id="ingredient-buttons">
           @foreach ($ingredients as $ingredient)
-              <button class="ingredient-button button">{{ $ingredient }}</button>
+              <button id="ingredient-button" type="button" class="button">{{ $ingredient }}</button>
           @endforeach
         </div>
 
@@ -27,7 +27,7 @@
       <div class="column">
 
         <div class="field">
-          <label class="label">Régime</label>
+          <label for="regimeSelect" class="label">Régime</label>
           <div class="control">
             <div class="select is-rounded">
               <select aria-label="select-regime" id="regimeSelect">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="field">
-          <label class="label">Type de plat</label>
+          <label for="typeSelect" class="label">Type de plat</label>
           <div class="control">
             <div class="select is-rounded">
               <select aria-label="select-type" id="typeSelect">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="field">
-          <label class="label">Nombre de portions</label>
+          <label for="portion-input" class="label">Nombre de portions</label>
           <div class="field is-grouped">
               <div class="control">
                 <input id="portion-input" class="input is-rounded" type="number" min="0">
@@ -66,7 +66,7 @@
         </div>
 
         <div class="field">
-          <label class="label" for="tempsPreparation">Temps de préparation</label>
+          <label class="label" for="temps-preparation">Temps de préparation</label>
           <input class="input is-rounded" type="number" id="temps-preparation" name="temps-preparation" min="0" step="5">
           <span> minutes</span>
         </div>
@@ -82,7 +82,7 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link">Valider</button>
+            <button type="submit" class="button is-link">Valider</button>
           </div>
           <div class="control">
             <button class="button is-link is-light" id='cancelButton'>Annuler</button>
