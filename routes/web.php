@@ -32,3 +32,13 @@ Route::get("/formIngredient", [RecetteController::class, "form"])
 
 Route::get('/recette', [RecetteController::class, 'afficher']);
 
+
+
+/*Route::post('/traiter-formulaire', [FormController::class, 'recette']);
+
+
+Route::get('/traiter-formulaire', function () {
+    return view('traiter-formulaire');
+});
+
+Route::post('/votre-route-laravel', 'RecetteController@traiterRecette');*/

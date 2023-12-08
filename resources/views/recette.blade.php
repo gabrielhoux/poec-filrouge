@@ -20,3 +20,14 @@
 
     </div>
 </div>
+
+class RecetteController extends Controller
+{
+    public function traiterRecette(Request $request)
+    {
+        $recette = $request->input('recette');
+        // Faites quelque chose avec les données de la recette, par exemple, enregistrez-les dans la base de données
+
+        return response()->json(['message' => 'Recette traitée avec succès']);
+    }
+}
