@@ -69,23 +69,20 @@
         <span> minutes</span>
       </div>
 
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox">
-            <strong>Léger</strong>
-          </label>
-        </div>
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" id="legerCheckbox">
+          <strong>Léger</strong>
+        </label>
       </div>
 
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link">Valider</button>
-          </div>
-          <div class="control">
-            <button class="button is-link is-light">Annuler</button>
-          </div>
-        </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link">Valider</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light" id='cancelButton'>Annuler</button>
       </div>
     </div>
   </form>
