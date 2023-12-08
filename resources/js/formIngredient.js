@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('temps de Preparation est :', tempsPreparation ,'minute');
         console.log('legerCheckbox :', legerCheckbox.checked);
         
-        
+      
     });
 
 
