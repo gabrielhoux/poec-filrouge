@@ -11,7 +11,6 @@ async function fetchOpenAIKey() {
   try {
     const response = await axios(`http://localhost:8000/api/openai-key`);
     const apiKey = response.data.apiKey;
-    console.log(apiKey);
     return apiKey;
 
   } catch (error) {
@@ -106,11 +105,10 @@ export async function sendDataToAPI(data) {
 
 async function sendRecipeToView(recipe) {
   try {
-    const formData = new FormData();
-    formData.append('recipe', recipe); // Ajouter la recette au FormData
+    const data = { recipe: recipe };
 
     // Envoyer les données à la route Laravel via une requête POST avec Axios
-    const response = await axios.post(`http://localhost:8000/recette`, formData);
+    const response = await axios.post(`http://localhost:8000/recette`, data);
 
     if (response.ok) {
       // Gérer la réponse si nécessaire
@@ -123,10 +121,6 @@ async function sendRecipeToView(recipe) {
     console.error("Erreur lors de l'envoi des données:", error);
   }
 }
-
-
-
-fetchOpenAIKey();
 
 
 
