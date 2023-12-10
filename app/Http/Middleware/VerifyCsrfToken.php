@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
+use Illuminate\Support\Facades\Log;
+use Closure;
 
 class VerifyCsrfToken extends Middleware
 {
@@ -14,4 +16,11 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
     ];
+
+    public function handle($request, Closure $next)
+    {
+        Log::info($request->headers);
+
+        return parent::handle($request, $next);
+    }
 }

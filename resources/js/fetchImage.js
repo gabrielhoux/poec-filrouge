@@ -1,14 +1,16 @@
 import axios from 'axios'
 
-document.addEventListener('DOMContentLoaded', () => {
+// Récupération du token CSRF
+const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
-    //fetchImage();
-
-})
+// Activation de l'authentification pour Axios
+axios.defaults.withCredentials = true;
 
 async function fetchSearchAPICredentials() {
   try {
-    const response = await axios(`http://localhost:8000/api/customsearch-key`);
+    const response = await axios(`http://127.0.0.1:8000/api/customsearch-key`);
     const data = response.data;
 
     return data;
@@ -18,27 +20,19 @@ async function fetchSearchAPICredentials() {
   }
   }
 
-async function fetchImage()
+export async function fetchImage(titreRecette)
 {
-    const imgContainer = document.getElementById('imgContainer');
-    while (imgContainer.firstChild && imgContainer.removeChild(imgContainer.firstChild));
-
-    const recipeTitle = document.getElementById('recipeTitle').innerHTML;
-
     const credentials = await fetchSearchAPICredentials();
     const apiKey = credentials.apiKey;
     const searchEngineId = credentials.searchEngineId;
-    const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&searchType=image&cx=${searchEngineId}&q=${recipeTitle}`
+    const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&searchType=image&cx=${searchEngineId}&q=${titreRecette}`
     
     try {
         const response = await axios.get(apiUrl);
         const firstImageURL = response.data.items[0].link;
 
-        console.log(response);
+        return firstImageURL;
 
-        const img = document.createElement('img');
-        img.src = firstImageURL;
-        imgContainer.appendChild(img);
       } catch (error) {
         console.log(error);
       }

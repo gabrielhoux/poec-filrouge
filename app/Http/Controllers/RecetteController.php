@@ -15,12 +15,11 @@ class RecetteController extends Controller
     
     public function afficher(Request $request)
     {
-        $donnees = $request->input('recipe');
-        $donneesArray = json_decode($donnees, true);
-        return view('recette', ['donnees'  => $donneesArray]); // Transmet les données à la vue
+        $donnees = $request->all();
+        return view('recette', ['donnees'  => $donnees]); // Transmet les données à la vue
     }
 
-    public function afficher2(Request $request)
+/*     public function afficher2(Request $request)
     {
         $donnees = '{
             "titre": "Crêpes",
@@ -53,7 +52,7 @@ class RecetteController extends Controller
         // Convertir la chaîne JSON en tableau associatif
         $donneesArray = json_decode($donnees, true);
         return view('recette', ['donnees'  => $donneesArray]); // Transmet les données à la vue
-    }
+    } */
 }
 
         
