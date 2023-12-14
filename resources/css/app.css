@@ -1,4 +1,6 @@
-/* Style pour le message de la bannière de cookies */
+#recette {
+    display: none;
+}
 
 .cookies-banner {
     position: fixed;
@@ -20,6 +22,6 @@
     max-width: 100px;
 }
 
-.imgRecipe {
+#imgRecette {
     object-fit: cover;
 }
