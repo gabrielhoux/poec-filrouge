@@ -1,3 +1,6 @@
+import { openModal, closeModal } from './loadingModal.js';
+import $ from 'jquery';
+
 document.addEventListener('DOMContentLoaded', () => {
     const ingredientInput = document.getElementById('ingredient-input');
     const addIngredientBtn = document.getElementById('add-ingredient');
@@ -47,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('temps de Preparation est :', tempsPreparation ,'minute');
         console.log('legerCheckbox :', legerCheckbox.checked);
 
-        // Vérification des valeurs optionnelles
         const data = { "ingredients": ingredients }; // Inclure toujours les ingrédients
+        // Vérification des valeurs optionnelles
         if (selectedRegime !== "") data.selectedRegime = selectedRegime;
         if (selectedType !== "") data.selectedType = selectedType;
         if (portionnbre !== "0") data.portionnbre = portionnbre;
@@ -57,13 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(data);
 
-        form.reset();
-        ingredientList.innerHTML = "";
-
         try {
             // Envoi des données à la fonction main
             const { sendDataToAPI } = await import('./fetchAPI.js');
+            openModal();
             await sendDataToAPI(data);
+            closeModal();
+            form.reset();
+            ingredientList.innerHTML = "";
         } catch (error) {
             console.error('Error sending data to main:', error);
         }
