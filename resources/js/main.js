@@ -8,3 +8,8 @@ $(function() {
     $('#formulaire').show();
     $('#recette').hide();
 });
+
+$('#return').on('click', () => {
+    $('#formulaire').show();
+    $('#recette').hide();
+});

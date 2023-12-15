@@ -5,8 +5,6 @@ const token = document.querySelector('meta[name="csrf-token"]').getAttribute('co
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-
 // Activation de l'authentification pour Axios
 axios.defaults.withCredentials = true;
 
@@ -30,7 +28,7 @@ export async function fetchImage(titreRecette)
     const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&searchType=image&cx=${searchEngineId}&q=${titreRecette}`
     
     try {
-        const response = await axios.get(proxyurl + apiUrl);
+        const response = await axios.get(apiUrl);
         const firstImageURL = response.data.items[0].link;
 
         return firstImageURL;

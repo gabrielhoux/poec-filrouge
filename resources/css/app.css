@@ -25,3 +25,7 @@
 #imgRecette {
     object-fit: cover;
 }
+
+#return {
+    cursor: pointer;
+}

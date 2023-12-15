@@ -1,8 +1,9 @@
-export function openModal(modal) {
-    modal.classList.add('is-active');
+import $ from 'jquery';
+
+export function openModal() {
+    $('#loadingModal').addClass('is-active');
 }
 
-export function closeModal(modal) {
-    modal.classList.remove('is-active');
+export function closeModal() {
+    $('#loadingModal').removeClass('is-active');
 }
- 

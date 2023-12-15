@@ -2,6 +2,8 @@
     <div class="columns">
         <div class="column is-two-third">
 
+            <i class="fa-solid fa-arrow-left fa-2xl" id="return"></i>
+
             <div class="content is-small">
 
                 <div class="has-text-centered">
