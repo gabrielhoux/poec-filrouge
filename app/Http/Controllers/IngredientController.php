@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class IngredientController extends Controller
 {
+
     // Retourne tous les ingrédients
     public function index()
     {
