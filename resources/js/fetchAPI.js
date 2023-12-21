@@ -27,91 +27,6 @@ async function fetchOpenAIKey() {
   }
 }
 
-/* async function addMessageToThread(threadId, userQuestion) {
-  try {
-    const message = await openai.beta.threads.messages.create(
-      threadId,
-      { role: "user", content: userQuestion }
-    );
-    console.log(message);
-  } catch (error) {
-    console.error('Error adding message to thread:', error);
-  }
-}
-
-async function getAnswer(assistantId, thread) {
-  try {
-    console.log("Thinking...");
-    console.log("Running assistant...");
-    const run = await openai.beta.threads.runs.create(
-      thread.id,
-      { assistant_id: assistantId }
-    );
-
-    while (true) 
-    {
-      const runInfo = await openai.beta.threads.runs.retrieve(
-        thread.id,
-        run.id
-      );
-      
-      if (runInfo.status === "completed") {
-        console.log("Run completed");
-        break;
-      }
-
-      console.log(runInfo.status);
-      console.log("Waiting 30sec...");
-      await new Promise((resolve) => setTimeout(resolve, 30000));
-    }
-
-    console.log(run);
-
-    console.log("All done...");
-    const messages = await openai.beta.threads.messages.list(thread.id);
-    const messageContent = messages.data[0].content[0].text.value;
-    const extractedJSON = messageContent.match(/{[^}]+}/);
-    const jsonString = extractedJSON[0];
-    const jsonObject = JSON.parse(jsonString);
-
-    return jsonObject;
-  } catch (error) {
-    console.error('Error getting answer:', error);
-  }
-}
-
-export async function sendDataToAPI(data) {
-  try {
-    const thread = await openai.beta.threads.create();
-    console.log("Created thread with id:", thread.id);
-  
-    // Exemple de liste d'ingrédients pour la recette
-    //const ingredients = ["beurre", "épinards", "pâtes", "cumin"];
-    const ingredients = data.ingredients;
-
-    // Construction du prompt pour demander une recette basée sur les ingrédients fournis
-    const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}`;
-
-    console.log(question);
-
-    await addMessageToThread(thread.id, question);
-    const recipe = await getAnswer(assistantId, thread);
-    console.log(`FYI, your thread is: ${thread.id}`);
-    console.log(`FYI, your assistant is: ${assistantId}`);
-
-    if (recipe == "" || !recipe) {
-      console.log("y a rien");
-    }
-    console.log(recipe);
-  
-    sendRecipeToView(recipe)
-
-    console.log("Thanks and happy to serve you");
-  } catch (error) {
-    console.error('Error in main: ', error);
-  }
-} */
-
 export async function sendDataToAPI(data) {
 
   const ingredients = data.ingredients;
@@ -209,16 +124,6 @@ async function displayRecipe(recipe) {
   $('#imgContainer').empty().append(imgElement);
   
 }
-
-/* async function sendRecipeToView(recipe) {
-  try {
-    console.log(recipe);
-    // Envoyer les données à la route Laravel via une requête POST avec Axios
-    await axios.post(`http://127.0.0.1:8000/recette`, recipe);
-  } catch (error) {
-    console.error("Erreur lors de l'envoi des données:", error);
-  }
-} */
 
 
 
