@@ -119,12 +119,25 @@ async function displayRecipe(recipe) {
     $('#ingredients').append(`<li>${ingredient}</li>`);
   });
 
-  // Fetch image from Google API and append to figure
-  const { fetchImage } = await import('./fetchImage.js');
-  const imageUrl = await fetchImage(recipe.titre);
-  const imgElement = $('<img>', { id: 'imgRecette', src: imageUrl });
+  // Get recipe image
+  const imgUrl = await getRecipeImage(recipe.titre);
+
+  // Append the image to the figure
+  const imgElement = $('<img>', { id: 'imgRecette', src: imgUrl });
   $('#imgContainer').empty().append(imgElement);
   
+}
+
+async function getRecipeImage(titre)
+{
+  try {
+    const response = await axios(`http://127.0.0.1:8000/api/fetch-image/${titre}`);
+    const imgUrl = await response.text();
+    return imgUrl;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
 }
 
 

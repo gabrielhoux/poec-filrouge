@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecetteController;
+use App\Http\Controllers\CustomSearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RecetteController::class, 'form'])->name('form');
 
-Route::post('/recette', [RecetteController::class, 'afficher'])->name('afficher');
-/* Route::get('/recette2', [RecetteController::class, 'afficher2'])->name('afficher2'); */
-
 // Route d'accès à la clé API OpenAI
 Route::get('/api/openai-key', function () {
     return response()->json([
@@ -27,12 +25,14 @@ Route::get('/api/openai-key', function () {
 });
 
 // Route d'accès à la clé API Google Custom Search
-Route::get('/api/customsearch-key', function () {
+/* Route::get('/api/customsearch-key', function () {
     return response()->json([
         'apiKey' => env('CUSTOMSEARCH_API_KEY'),
         'searchEngineId' => env('SEARCH_ENGINE_ID')
     ]);
-});
+}); */
+
+Route::get('/api/fetch-image/{titreRecette}', [CustomSearchController::class, 'fetchImage'])->name('fetchImage');
 
 
 
