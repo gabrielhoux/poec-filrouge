@@ -8,11 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientButtons = document.querySelectorAll('#ingredient-button');
 
     addIngredientBtn.addEventListener('click', () => {
+        $('#input-message').text("");
+        $('#ingredient-input').removeClass("is-danger");
+        $('#input-icon-container').empty();
         const newIngredient = ingredientInput.value.trim();
-        if (newIngredient !== '') {
+        if (/^[A-Za-z\s]+$/.test(newIngredient)) {
             const li = document.createElement('li');
             li.textContent = newIngredient.toLowerCase();
             ingredientList.appendChild(li);
+            ingredientInput.value = '';
+        } else {
+            $('#input-message').text("Entrée invalide");
+            $('#ingredient-input').addClass("is-danger");
+            $('#input-icon-container').append("<i class='fas fa-exclamation-triangle'></i>");
             ingredientInput.value = '';
         }
     });
