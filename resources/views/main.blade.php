@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     @vite(['resources/css/app.css', 'resources/js/main.js'])
 </head>
+
 <body>
     <section class="section is-small">
         <h1 class="title">M•IA•M</h1>
         <h2 class="subtitle">
-          Besoin d'une <strong>recette</strong> ?
+            Besoin d'une <strong>recette</strong> ?
         </h2>
-
         @include('formIngredient')
+        </h1>
     </section>
-    <footer class="footer">
+
+    <footer>
         @include('cookiesFooter')
+        <p>Copyright du site web de test <a href="#">Lien externe</a></p>
     </footer>
 </body>
+
 </html>
