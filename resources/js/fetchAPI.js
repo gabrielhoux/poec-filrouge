@@ -55,15 +55,17 @@ export async function sendDataToAPI(data) {
   `;
 
   // Construction du prompt pour demander une recette basée sur les ingrédients fournis
-  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}, 
-  Type de plat: ${data.selectedType || 'non spécifié'}
-  Régime: ${data.selectedRegime || 'non spécifié'}
-  Nombre de portions: ${data.portionnbre || 'non spécifié'}
-  Temps de préparation: ${data.tempsPreparation || 'non spécifié'}
-  Léger: ${data.legerCheckbox ? 'oui' : 'non spécifié'}
-  `;
+  let criteres = "";
+  criteres += (data.selectedType ? `, type de plat: ${data.selectedType}` : "");
+  criteres += (data.selectedRegime ? `, régime: ${data.selectedRegime}` : "");
+  criteres += (data.portionnbre ? `, portions: ${data.portionnbre}` : "");
+  criteres += (data.tempsPreparation ? `, temps: ${data.tempsPreparation}` : "");
+  criteres += (data.legerCheckbox ? ", léger: oui" : "");
+
+  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}${criteres}`; 
 
   const prompt = instruction + question;
+  console.log(prompt);
 
   try {
     const completion = await openai.chat.completions.create({
