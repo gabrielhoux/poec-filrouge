@@ -6,10 +6,16 @@
       <div class="column">
         <div class="field">
           <label for="ingredient-input" class="label">Ingrédients</label>
-          <div class="control">
-              <input id="ingredient-input" class="input is-focused" pattern="[A-Za-z\s]+" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
+          <div class="field has-addons">
+            <div id="ingredient-control" class="control has-icons-right">
+              <input id="ingredient-input" class="input" pattern="[A-Za-z\s]+" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
+              <span id="input-icon-container" class="icon is-small is-right"></span>
+            </div>
+            <div class="control">
               <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
+            </div>
           </div>
+          <p id="input-message" class="help is-danger"></p>
         </div>
 
         <div class="buttons are-small" id="ingredient-buttons">

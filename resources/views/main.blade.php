@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <section class="section is-small">
+    <section class="section is-smal">
 
         <div id="formulaire">
             @include('formIngredient', ['ingredients' => $ingredients])

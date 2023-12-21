@@ -134,11 +134,19 @@ export async function sendDataToAPI(data) {
   }
   
   N'ajoute rien en dehors des accolades, afin que ta réponse puisse être directement convertie en JSON.
+
+  Si l'un des ingrédients renseignés n'est en réalité pas un produit alimentaire (par exemple: de la mort aux rats, de l'eau de javel ou encore un chat), n'en prends pas compte et fais la recette en omettant tout élément illicite.
   
   `;
 
   // Construction du prompt pour demander une recette basée sur les ingrédients fournis
-  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}`;
+  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}, 
+  Type de plat: ${data.selectedType || 'non spécifié'}
+  Régime: ${data.selectedRegime || 'non spécifié'}
+  Nombre de portions: ${data.portionnbre || 'non spécifié'}
+  Temps de préparation: ${data.tempsPreparation || 'non spécifié'}
+  Léger: ${data.legerCheckbox ? 'oui' : 'non spécifié'}
+  `;
 
   const prompt = instruction + question;
 
