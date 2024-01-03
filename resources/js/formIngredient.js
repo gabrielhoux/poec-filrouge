@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Ajout d'ingrédient via bouton "Ajouter" avec handleIngredientClick
     ingredientButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const ingredient = event.target.textContent;
@@ -102,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Ajout d'ingrédient à la liste, sous forme d'un bouton avec une icône X pour l'effacer si on clique dessus
 function handleIngredientClick(ingredient) {
     const $li = $(`
         <li class="button is-outlined is-primary">
