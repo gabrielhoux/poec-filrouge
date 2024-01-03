@@ -21,6 +21,7 @@ class CustomSearchController extends Controller
         // Make a server-side request to the Custom Search API
         $response = Http::withHeaders([
             'X-CSRF-TOKEN' => $csrfToken,
+            'Content-Type' => 'application/json'
         ])->get($apiUrl);
 
         // Return the image URL or a placeholder URL based on the response

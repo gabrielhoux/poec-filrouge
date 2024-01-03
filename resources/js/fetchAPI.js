@@ -131,7 +131,7 @@ async function displayRecipe(recipe) {
 async function getRecipeImage(titre)
 {
   try {
-    const response = await axios(`http://127.0.0.1:8000/api/fetch-image/${titre}`);
+    const response = await axios.get(`http://127.0.0.1:8000/api/fetch-image/${titre}`);
     const imgUrl = await response.text();
     return imgUrl;
   } catch (error) {
