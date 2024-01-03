@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () =>
         console.log(data);
 
         // Push custom event to track form submission with data submitted
-        _paq.push(['trackEvent', 'Form', 'Submission', `${data}`]);
+        _paq.push(['trackEvent', 'Form', 'Submission', data.toString()]);
 
         try {
             // Envoi des données à la fonction main
