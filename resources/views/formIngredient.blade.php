@@ -25,6 +25,7 @@
         </div>
 
         <div class="field">
+          <label for="ingredient-input" class="label">Ingrédients sélectionnés</label>
           <ul id="ingredient-list"></ul>
         </div>
 
