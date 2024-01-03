@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () =>
         {
             // Formattage minuscule de l'ingrédient
             const formattedIngredient = newIngredient.toLowerCase();
-            // Ajout de l'ingrédient
-            handleIngredientClick(formattedIngredient);
             // Ajout de l'évenement à Matomo
             _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient manuel', formattedIngredient]);
+            // Ajout de l'ingrédient
+            handleIngredientClick(formattedIngredient);
             // Réinitialisation du champs
             ingredientInput.value = '';
         }
@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', () =>
         button.addEventListener('click', (event) =>
         {
             const ingredient = event.target.textContent;
-            // Ajout de l'ingrédient
-            handleIngredientClick(ingredient);
             // Ajout de l'évenement à Matomo
             _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient', ingredient]);
+            // Ajout de l'ingrédient
+            handleIngredientClick(ingredient);
         });
     });
 
