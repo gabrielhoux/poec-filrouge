@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#input-icon-container').empty();
         const newIngredient = ingredientInput.value.trim();
         if (/^[A-Za-z\s]+$/.test(newIngredient)) {
-            const li = document.createElement('li');
-            li.textContent = newIngredient.toLowerCase();
-            ingredientList.appendChild(li);
+            handleIngredientClick(newIngredient.toLowerCase());
             ingredientInput.value = '';
         } else {
             $('#input-message').text("Entrée invalide");
@@ -34,8 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Supprimer un ingrédient en cliquant dessus dans la liste
     ingredientList.addEventListener('click', (event) => {
-        if (event.target.tagName === 'LI') {
-            event.target.remove();
+        if (event.target.tagName === 'i') {
+            const li = event.target.parentElement;
+            li.remove();
         }
     });   
 
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('ingredient-form');
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Empêche la soumission par défaut
-        const ingredients = [...ingredientList.querySelectorAll('li')].map(li => li.textContent);
+        const ingredients = [...ingredientList.querySelectorAll('#ingredient-element')].map(el => el.textContent);
         console.log(ingredients); // Affiche les ingrédients à soumettre (remplacez par l'envoi AJAX ou la manipulation des données)
         // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
@@ -104,12 +103,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function handleIngredientClick(ingredient) {
-    const li = document.createElement('li');
-    li.textContent = ingredient;
+    const $li = $(`
+        <li class="button is-outlined is-primary">
+            <span id="ingredient-element">${ingredient}</span>
+            <span class="icon is-small">
+                <i class="fas fa-times remove-ingredient"></i>
+            </span>
+        </li>
+    `);
 
-    // Ajouter l'ingrédient à la liste
-    const ingredientList = document.getElementById('ingredient-list');
-    ingredientList.appendChild(li);
+    $('#ingredient-list').append($li);
+
+    $li.find('.remove-ingredient').on('click', () => {
+        $li.remove();
+    });
 }
 
 
