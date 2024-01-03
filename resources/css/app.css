@@ -1,4 +1,6 @@
-/* Style pour le message de la bannière de cookies */
+#recette {
+    display: none;
+}
 
 .cookies-banner {
     position: fixed;
@@ -9,16 +11,21 @@
     color: #fff;
     padding: 20px;
     text-align: center;
+    display: none;
 }
 
 #ingredient-input {
-    max-width: 33vw;
+    width: 33vw;
 }
 
 #temps-preparation {
     max-width: 100px;
 }
 
-.imgRecipe {
+#imgRecette {
     object-fit: cover;
+}
+
+#return {
+    cursor: pointer;
 }

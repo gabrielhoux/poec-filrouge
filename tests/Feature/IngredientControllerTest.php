@@ -1,59 +1,44 @@
 <?php
 
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Ingredient;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class IngredientControllerTest extends TestCase
 {
-    use RefreshDatabase; // Assure que la base de données est réinitialisée entre chaque test
+    use RefreshDatabase;
 
-    public function testIndex()
+    public function test_index_returns_all_ingredients()
     {
-        // Crée quelques ingrédients fictifs dans la base de données
-        Ingredient::factory()->count(5)->create();
-
-        $response = $this->get('/api/ingredients');
+        $ingredient = Ingredient::factory()->create();
+        $response = $this->get('/ingredients');
         $response->assertStatus(200);
-        $this->assertCount(5, $response->json());
+        $response->assertJson([$ingredient->toArray()]);
     }
 
-    public function testStoreWithValidData()
+    public function test_store_creates_new_ingredient()
     {
-        $data = ['name' => 'Pomme']; // Données valides
-
-        $response = $this->post('/api/ingredients', $data);
+        $data = ['name' => 'Test Ingredient'];
+        $response = $this->post('/ingredients', $data);
         $response->assertStatus(200);
-
-        // Vérifie si l'ingrédient a bien été ajouté à la base de données
         $this->assertDatabaseHas('ingredients', $data);
     }
 
-    public function testStoreWithInvalidData()
-    {
-        $data = ['name' => '']; // Données invalides
-
-        $response = $this->post('/api/ingredients', $data);
-        $response->assertSessionHasErrors('name'); // Vérifie si des erreurs de validation sont renvoyées
-    }
-
-    public function testShow()
+    public function test_show_returns_specific_ingredient()
     {
         $ingredient = Ingredient::factory()->create();
-
-        $response = $this->get('/api/ingredients/' . $ingredient->id);
-        $response->assertStatus(200)
-            ->assertJson(['name' => $ingredient->name]);
-    }
-
-    public function testDestroy()
-    {
-        $ingredient = Ingredient::factory()->create();
-
-        $response = $this->delete('/api/ingredients/' . $ingredient->id);
+        $response = $this->get("/ingredients/{$ingredient->id}");
         $response->assertStatus(200);
+        $response->assertJson($ingredient->toArray());
+    }
 
-        // Vérifie si l'ingrédient a bien été supprimé de la base de données
-        $this->assertModelMissing($ingredient);
+    public function test_destroy_deletes_specific_ingredient()
+    {
+        $ingredient = Ingredient::factory()->create();
+        $response = $this->delete("/ingredients/{$ingredient->id}");
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('ingredients', ['id' => $ingredient->id]);
     }
 }

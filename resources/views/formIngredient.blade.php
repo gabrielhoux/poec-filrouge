@@ -6,19 +6,26 @@
       <div class="column">
         <div class="field">
           <label for="ingredient-input" class="label">Ingrédients</label>
-          <div class="control">
-              <input id="ingredient-input" class="input is-focused" pattern="[A-Za-z\s]+" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
-              <button id="add-ingredient" class="button is-primary" type="button">Ajouter</button>
+          <div class="field has-addons">
+            <div id="ingredient-control" class="control has-icons-right">
+              <input id="ingredient-input" class="input is-rounded" pattern="[A-Za-z\s]+" type="text" placeholder="Pâtes, oeuf, ..." autofocus>
+              <span id="input-icon-container" class="icon is-small is-right"></span>
+            </div>
+            <div class="control">
+              <button id="add-ingredient" class="button is-primary is-rounded" type="button">Ajouter</button>
+            </div>
           </div>
+          <p id="input-message" class="help is-danger"></p>
         </div>
 
         <div class="buttons are-small" id="ingredient-buttons">
           @foreach ($ingredients as $ingredient)
-              <button id="ingredient-button" type="button" class="button">{{ $ingredient }}</button>
+              <button id="ingredient-button" type="button" class="button is-rounded">{{ $ingredient }}</button>
           @endforeach
         </div>
 
         <div class="field">
+          <label for="ingredient-input" class="label">Ingrédients sélectionnés</label>
           <ul id="ingredient-list"></ul>
         </div>
 
@@ -82,10 +89,20 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button type="submit" class="button is-link">Valider</button>
+            <button type="submit" class="button is-link is-rounded">
+              <span class="icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <span>Valider</span>
+            </button>
           </div>
           <div class="control">
-            <button class="button is-link is-light" id='cancelButton'>Annuler</button>
+            <button type="button" class="button is-link is-light is-rounded" id='cancelButton'>
+              <span class="icon">
+                <i class="fa-solid fa-rotate-left"></i>
+              </span>
+              <span>Réinitialiser</span>
+            </button>
           </div>
         </div>
       </div>

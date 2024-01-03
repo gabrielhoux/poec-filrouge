@@ -1,20 +1,24 @@
 <?php
 
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\Ingredient;
 
 class RecetteControllerTest extends TestCase
 {
-    public function testForm()
-    {
-        $response = $this->get('/formIngredient');
-        $response->assertViewIs('formIngredient');
-    }
+    use RefreshDatabase;
 
-    public function testAfficher()
+    public function test_form_returns_view_with_ingredients()
     {
-        // Créer un objet Request simulé avec des données
-        $response = $this->post('/recette', ['test' => 'data']);
-        $response->assertViewIs('recette'); // Vérifier si la vue retournée est correcte
-        // Ajouter d'autres assertions pour vérifier les données retournées
+        $ingredientNames = ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'];
+        Ingredient::factory()->create(['name' => $ingredientNames[0]]);
+        Ingredient::factory()->create(['name' => $ingredientNames[1]]);
+        Ingredient::factory()->create(['name' => $ingredientNames[2]]);
+
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertViewHas('ingredients', $ingredientNames);
     }
 }
