@@ -12,7 +12,9 @@
               <span id="input-icon-container" class="icon is-small is-right"></span>
             </div>
             <div class="control">
-              <button id="add-ingredient" class="button is-primary is-rounded" type="button">Ajouter</button>
+              <button id="add-ingredient" class="button is-primary is-rounded" type="button">
+                Ajouter
+              </button>
             </div>
           </div>
           <p id="input-message" class="help is-danger"></p>
@@ -20,7 +22,9 @@
 
         <div class="buttons are-small" id="ingredient-buttons">
           @foreach ($ingredients as $ingredient)
-              <button id="ingredient-button" type="button" class="button is-rounded">{{ $ingredient }}</button>
+              <button id="ingredient-button" type="button" class="button is-rounded">
+                {{ $ingredient }}
+              </button>
           @endforeach
         </div>
 
