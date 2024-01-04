@@ -59,7 +59,7 @@ export async function sendDataToAPI(data) {
   criteres += (data.selectedType ? `, type de plat: ${data.selectedType}` : "");
   criteres += (data.selectedRegime ? `, régime: ${data.selectedRegime}` : "");
   criteres += (data.portionnbre ? `, portions: ${data.portionnbre}` : "");
-  criteres += (data.tempsPreparation ? `, temps: ${data.tempsPreparation}` : "");
+  criteres += (data.tempsPreparation ? `, temps maximum: ${data.tempsPreparation}` : "");
   criteres += (data.legerCheckbox ? ", léger: oui" : "");
 
   const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}${criteres}`; 
