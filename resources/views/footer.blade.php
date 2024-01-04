@@ -2,7 +2,7 @@
     <div class="content has-text-centered">
         <p>
             Cuisiné avec goût par <a href="https://github.com/gabrielhoux">Gabriel Houx</a>,
-            <a href="https://github.com/noraceppic">Nora Messaouidi</a>,
+            <a href="https://github.com/noraceppic">Nora Messaoudi</a>,
             <a href="https://github.com/Maria-hub2020">Maria de Carvalho</a>
             & <a href="https://github.com/Joseceppic2020">José-Antonio Djata</a>
         </p>
