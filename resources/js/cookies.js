@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cookiesBanner = document.getElementById('cookiesBanner');
 
     // Check if the user has already made a choice about cookies
-    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    var cookiesAccepted = localStorage.getItem('cookiesAccepted');
     console.log('cookiesAccepted:', cookiesAccepted); // Debugging line
 
     if (!cookiesAccepted) {

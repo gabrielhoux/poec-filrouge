@@ -3,6 +3,7 @@ import './cookies.js';
 import './fetchAPI.js';
 import $ from 'jquery';
 
+var cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
 if (cookiesAccepted == true)
 {

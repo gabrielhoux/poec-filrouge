@@ -1,6 +1,8 @@
 import { openModal, closeModal } from './loadingModal.js';
 import $ from 'jquery';
 
+var cookiesAccepted = localStorage.getItem('cookiesAccepted');
+
 document.addEventListener('DOMContentLoaded', () =>
 {
     const ingredientInput = document.getElementById('ingredient-input');
@@ -20,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () =>
             // Formattage minuscule de l'ingrédient
             const formattedIngredient = newIngredient.toLowerCase();
             // Ajout de l'évenement à Matomo
-            _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient manuel', formattedIngredient]);
+            if (cookiesAccepted == true)
+            {
+                _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient manuel', formattedIngredient]);
+            }
             // Ajout de l'ingrédient
             handleIngredientClick(formattedIngredient);
             // Réinitialisation du champs
@@ -42,7 +47,10 @@ document.addEventListener('DOMContentLoaded', () =>
         {
             const ingredient = event.target.textContent;
             // Ajout de l'évenement à Matomo
-            _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient', ingredient]);
+            if (cookiesAccepted == true)
+            {
+                _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient', ingredient]);
+            }
             // Ajout de l'ingrédient
             handleIngredientClick(ingredient);
         });
@@ -83,7 +91,10 @@ document.addEventListener('DOMContentLoaded', () =>
         console.log(data);
 
         // Push custom event to track form submission with data submitted
-        _paq.push(['trackEvent', 'Form', 'Submission', data.toString()]);
+        if (cookiesAccepted == true)
+        {
+            _paq.push(['trackEvent', 'Form', 'Submission', data.toString()]);
+        }
 
         try {
             // Envoi des données à la fonction main
@@ -106,7 +117,10 @@ document.addEventListener('DOMContentLoaded', () =>
         form.reset();
 
         // Ajout de l'évenement à Matomo
-        _paq.push(['trackEvent', 'Button click', 'Réinitialisation du formulaire']);
+        if (cookiesAccepted == true)
+        {
+            _paq.push(['trackEvent', 'Button click', 'Réinitialisation du formulaire']);
+        }
     
          // Réinitialiser la liste des ingrédients
         ingredientList.innerHTML  = '';
