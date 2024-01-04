@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cookiesAccepted = localStorage.getItem('cookiesAccepted');
     console.log('cookiesAccepted:', cookiesAccepted); // Debugging line
 
-    if (cookiesAccepted != true) {
+    if (!cookiesAccepted) {
         cookiesBanner.style.display = "block";
     } else {
         cookiesBanner.style.display = "none";
