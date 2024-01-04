@@ -34,3 +34,9 @@
 #return {
     cursor: pointer;
 }
+
+.logo-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
