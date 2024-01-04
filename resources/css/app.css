@@ -1,0 +1,36 @@
+#recette {
+    display: none;
+}
+
+.cookies-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: none;
+}
+
+#ingredient-list:empty:before {
+    content: "Aucun ingrédient sélectionné pour le moment.";
+    font-size: 0.75rem;
+}
+
+#ingredient-input {
+    width: 33vw;
+}
+
+#temps-preparation {
+    max-width: 100px;
+}
+
+#imgRecette {
+    object-fit: cover;
+}
+
+#return {
+    cursor: pointer;
+}
