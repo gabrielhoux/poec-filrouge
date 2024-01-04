@@ -31,7 +31,7 @@ $(function()
 });
 
 // Affichage du formulaire et dissimulation de la recette en cliquant sur le bouton flèche #return
-$('#return').on('click', () =>
+$('#returnButton').on('click', () =>
 {
     $('#formulaire').show();
     $('#recette').hide();

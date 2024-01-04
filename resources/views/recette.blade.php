@@ -2,11 +2,11 @@
     <div class="columns">
         <div class="column is-two-third">
 
-            <div class="columns">
+            <div class="columns is-mobile">
                 <span class="column is-one-fifth">
-                    <button type="button" class="button is-danger is-rounded" id='cancelButton'>
+                    <button type="button" class="button is-danger is-rounded" id="returnButton">
                         <span class="icon">
-                            <i class="fa-solid fa-arrow-left" id="return"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </span>
                         <span>Retour</span>
                     </button>
