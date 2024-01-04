@@ -29,8 +29,6 @@ async function fetchOpenAIKey() {
 
 export async function sendDataToAPI(data) {
 
-  const ingredients = data.ingredients;
-
   const instruction = `
   Tu es un puits intarissable de savoir en termes de recettes de cuisine.
   Afin que je puisse diffuser tes recettes sur internet pour que le monde entier en profite, il faut que la recette de cuisine que tu me donnes soit disposée tel un fichier JSON,
@@ -62,7 +60,7 @@ export async function sendDataToAPI(data) {
   criteres += (data.tempsPreparation ? `, temps maximum: ${data.tempsPreparation}` : "");
   criteres += (data.legerCheckbox ? ", léger: oui" : "");
 
-  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}${criteres}`; 
+  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${data.ingredients.join(", ")}${criteres}`; 
 
   const prompt = instruction + question;
   console.log(prompt);

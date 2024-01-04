@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const refuseCookiesBtn = document.getElementById('refuseCookies');
     const cookiesBanner = document.getElementById('cookiesBanner');
 
-    // Check if the user has already made a choice about cookies
+    // Récupération de la variable locale de l'utilisateur indiquant l'acceptation des cookies
     var cookiesAccepted = localStorage.getItem('cookiesAccepted');
     console.log('cookiesAccepted:', cookiesAccepted); // Debugging line
 
@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
         cookiesBanner.style.display = "none";
     }
 
-    // If the user accepts cookies
+    // Cache la bannière cookies définitivement si accepté
     acceptCookiesBtn.addEventListener('click', () => {
-        // Store the user's choice in localStorage
+        // Enregistrement du choix de l'utilisateur dans une variable locale
         localStorage.setItem('cookiesAccepted', true);
         cookiesBanner.style.display = "none";
     });
 
-    // If the user refuses cookies
+    // Cache la bannière cookies jusqu'au prochain chargement si refusé
     refuseCookiesBtn.addEventListener('click', () => {
-        // Store the user's choice in localStorage
+        // Enregistrement du choix de l'utilisateur dans une variable locale
         localStorage.setItem('cookiesAccepted', false);
         cookiesBanner.style.display = "none";
     });
