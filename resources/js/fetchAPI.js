@@ -12,7 +12,6 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 axios.defaults.withCredentials = true;
 
 // Initialisation des variables pour utiliser l'API OpenAI
-const assistantId = "asst_ISGtoQnIZkGJ9tCm2wICRLis";
 const apiKey = await fetchOpenAIKey();
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
