@@ -2,7 +2,24 @@
     <div class="columns">
         <div class="column is-two-third">
 
-            <i class="fa-solid fa-arrow-left fa-2xl" id="return"></i>
+            <div class="columns is-mobile">
+                <span class="column is-one-fifth">
+                    <button type="button" class="button is-danger is-rounded" id="returnButton">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </span>
+                        <span>Retour</span>
+                    </button>
+                </span>
+                <span class="column is-one-fifth">
+                    <button type="button" class="button is-danger is-light is-rounded" id='regenerateButton'>
+                        <span class="icon">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </span>
+                        <span>Recommencer</span>
+                    </button>
+                </span>
+            </div>
 
             <div class="content is-small">
 
