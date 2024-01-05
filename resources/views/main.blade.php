@@ -18,13 +18,13 @@
     <section class="hero is-small">
     
         <div class="container is-fluid has-text-centered mt-4 mb-4">
-            <img src="images/logo6.png" alt="Logo" class="image-logo">
+            <img src="images/logo_kalnia.png" alt="Logo" class="image-logo">
         </div>
         
     </section>
 
     <div class="container is-fluid mt-4">
-        <h2 class="subtitle" id="miam-subtitle">
+        <h2 class="subtitle is-size-3 ml-6" id="miam-subtitle">
             Besoin d'une <strong>recette</strong> ?
         </h2>
     </div>

@@ -1,10 +1,10 @@
 <footer class="footer">
     <div class="content has-text-centered">
         <p>
-            Cuisiné avec goût par <a href="https://github.com/gabrielhoux">Gabriel Houx</a>,
-            <a href="https://github.com/noraceppic">Nora Messaoudi</a>,
-            <a href="https://github.com/Maria-hub2020">Maria de Carvalho</a>
-            & <a href="https://github.com/Joseceppic2020">José-Antonio Djata</a>
+            Cuisiné avec goût par <a class="has-text-danger" href="https://github.com/gabrielhoux">Gabriel Houx</a>,
+            <a class="has-text-danger" href="https://github.com/noraceppic">Nora Messaoudi</a>,
+            <a class="has-text-danger" href="https://github.com/Maria-hub2020">Maria de Carvalho</a>
+            & <a class="has-text-danger" href="https://github.com/Joseceppic2020">José-Antonio Djata</a>
         </p>
         <p>
             Tous droits réservés • <b>mIAm</b> 2023-2024
