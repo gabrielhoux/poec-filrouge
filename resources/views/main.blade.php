@@ -43,9 +43,7 @@
 
     @include('loadingModal')
 
-    <footer class="footer">
-        @include('cookiesFooter')
-    </footer>
+    @include('footer')
 </body>
 <script src="https://kit.fontawesome.com/9c1d9ed11d.js" crossorigin="anonymous"></script>
 </html>

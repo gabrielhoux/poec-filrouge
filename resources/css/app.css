@@ -1,6 +1,10 @@
 body {
     background: linear-gradient(to right,#F8EFEA,#F2E9EB);
-    margin: 0; 
+}
+
+.footer {
+    background-color: #efe7e4;
+    max-height: 15rem;
 }
 
 #recette {
@@ -44,16 +48,12 @@ body {
     background-color:#e2d9d5;
 }
 
-#logo-container {
+.logo-container {
     display: flex;
     align-items: center;
     height: 100% ;
     justify-content: center;
     margin-left: 0;
-}
-
-#portion-input{
-    width: 147px;
 }
 
 #miam-subtitle {
@@ -68,7 +68,6 @@ body {
 
 #button-element{
     background-color:#e2d9d5; 
-
 }
 
 
