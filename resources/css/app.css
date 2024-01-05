@@ -1,3 +1,5 @@
+
+
 #recette {
     display: none;
 }
@@ -29,3 +31,69 @@
 #return {
     cursor: pointer;
 }
+.title {
+    color: hsl(348, 84%, 64%);
+   font-size:5rem;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+   font-family: 'Macondo', cursive;
+   
+}
+body{
+    background: linear-gradient(to right,#F8EFEA,#F2E9EB);
+    margin: 0;
+   
+}
+
+.hero {
+    background-color:#e2d9d5;
+    height: 150px;
+    box-shadow: 2px 2px 4px rgba(87, 86, 86, 0.);
+    
+}
+
+.container{
+    
+    display:flex;
+    align-items: center;
+    height: 100% ;
+    justify-content: center;
+    margin-left: 0;
+
+
+
+}
+#portion-input{
+    width: 147px;
+}
+.subtitle{
+    font-size: 30px;
+    padding-top: 10px;
+    margin-left: 13%;
+    color:brown;
+    font-family: 'Kalnia', serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Sacramento', cursive;
+}
+
+#button-element{
+    background-color:#e2d9d5; 
+
+}
+
+
+.image-logo{
+    width: 10rem;
+    height: auto;
+
+}
+
+.image-legume{
+    width: 15rem;
+    height: auto;
+    margin-right: 15rem;
+
+}
+
+
+
+

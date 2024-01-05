@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function handleIngredientClick(ingredient) {
     const $li = $(`
-        <li class="button is-outlined is-primary">
+        <li id="button-element"  class="button is-outlined  mb-2 mr-2 ">
             <span id="ingredient-element">${ingredient}</span>
             <span class="icon is-small">
                 <i class="fas fa-times remove-ingredient"></i>
