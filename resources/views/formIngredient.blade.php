@@ -3,7 +3,7 @@
   @csrf
     <div class="columns">
 
-      <div class="column">
+      <div class="column is-three-fifth">
         <div class="field">
           <label for="ingredient-input" class="label">Ingrédients</label>
           <div class="field has-addons">
@@ -28,14 +28,14 @@
           @endforeach
         </div>
 
-        <div class="field">
+        <div class="field" id="ingredient-field">
           <label for="ingredient-input" class="label" >Ingrédients sélectionnés</label>
           <ul id="ingredient-list" class="mb-4"></ul>
         </div>
 
       </div>
 
-      <div class="column">
+      <div class="column is-two-fifth">
 
         <div class="field">
           <label for="regimeSelect" class="label">Régime</label>

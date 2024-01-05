@@ -17,9 +17,8 @@
 
     <section class="hero is-small">
     
-        <div class="container has-text-centered">
-            <img src="images/logo1.jpg" alt="Logo" class="image-logo">
-            <h1 class="title" id="miam-title"> mIAm</h1>
+        <div class="container is-fluid has-text-centered mt-4 mb-4">
+            <img src="images/logo6.png" alt="Logo" class="image-logo">
         </div>
         
     </section>
@@ -30,7 +29,7 @@
         </h2>
     </div>
 
-    <section class="section is-smal">
+    <section class="section is-small">
 
         <div id="formulaire">
             @include('formIngredient', ['ingredients' => $ingredients])
