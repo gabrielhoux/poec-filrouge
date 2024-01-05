@@ -7,7 +7,7 @@ import $ from 'jquery';
 var cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
 // Initialisation du script Matomo pour l'enregistrement des événèments utilisateur si cookies acceptés
-if (cookiesAccepted == true)
+if (cookiesAccepted === "true")
 {
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */

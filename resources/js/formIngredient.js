@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () =>
             const formattedIngredient = newIngredient.toLowerCase();
 
             // Enregistrement de l'évènement via Matomo
-            if (cookiesAccepted == true)
+            if (cookiesAccepted === "true")
             {
                 _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient manuel', formattedIngredient]);
             }
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () =>
             const ingredient = event.target.textContent;
 
             // Enregistrement de l'évènement via Matomo
-            if (cookiesAccepted == true)
+            if (cookiesAccepted === "true")
             {
                 _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient', ingredient]);
             }
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () =>
         console.log(data);
 
         // Enregistrement de l'évènement via Matomo
-        if (cookiesAccepted == true)
+        if (cookiesAccepted === "true")
         {
             _paq.push(['trackEvent', 'Form', 'Submission', data.toString()]);
         }
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () =>
         form.reset();
 
         // Enregistrement de l'évènement via Matomo
-        if (cookiesAccepted == true)
+        if (cookiesAccepted === "true")
         {
             _paq.push(['trackEvent', 'Button click', 'Réinitialisation du formulaire']);
         }
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () =>
         event.preventDefault(); // Empêche la soumission par défaut
 
         // Enregistrement de l'évènement via Matomo
-        if (cookiesAccepted == true)
+        if (cookiesAccepted === "true")
         {
             _paq.push(['trackEvent', 'Form', 'Resubmission', data.toString()]);
         }
