@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!cookiesChoiceMade) {
         cookiesBanner.style.display = "block";
     } else {
-        cookiesBanner.style.display = "none";
+        cookiesBanner.style.display = "block";
     }
 
     // If the user accepts cookies

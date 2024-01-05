@@ -29,3 +29,31 @@
 #return {
     cursor: pointer;
 }
+
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style général pour le footer */
+
+
+/* Style pour le contenu à l'intérieur du footer 
+.footer-content {
+    border-top: 1px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.footer-content a {
+    color: #fff;
+    text-decoration: underline;
+    margin: 0 10px;
+}*/
