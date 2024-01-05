@@ -1,3 +1,8 @@
+body {
+    background: linear-gradient(to right,#F8EFEA,#F2E9EB);
+    margin: 0; 
+}
+
 #recette {
     display: none;
 }
@@ -34,3 +39,44 @@
 #return {
     cursor: pointer;
 }
+
+#miam-title {
+    color: hsl(348, 100%, 61%);
+    font-size:5rem;
+    font-family: 'Kalnia';
+}
+
+.navbar {
+    background-color:#e2d9d5;
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+    height: 100% ;
+    justify-content: center;
+    margin-left: 0;
+}
+
+#portion-input{
+    width: 147px;
+}
+
+#miam-subtitle {
+    font-size: 30px;
+    padding-top: 10px;
+    margin-left: 13%;
+    color:brown;
+    font-family: 'Kalnia', serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Sacramento', cursive;
+}
+
+#button-element{
+    background-color:#e2d9d5; 
+
+}
+
+
+
+

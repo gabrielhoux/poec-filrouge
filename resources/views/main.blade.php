@@ -5,20 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>mIAm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@500&family=Roboto:wght@100&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css', 'resources/js/main.js'])
+    
 </head>
 <body>
-    
+
     <section class="hero is-small">
-        <div class="hero-body has-text-centered">
-            <h1 class="title">mIAm</h1>
-            <h2 class="subtitle">
-            Besoin d'une <strong>recette</strong> ?
-            </h2>
+    
+        <div class="container has-text-centered">
+            <img src="images/logo1.jpg" alt="Logo" class="image-logo">
+            <h1 class="title" id="miam-title"> mIAm</h1>
         </div>
+        
     </section>
+
+    <div class="container is-fluid mt-4">
+        <h2 class="subtitle" id="miam-subtitle">
+            Besoin d'une <strong>recette</strong> ?
+        </h2>
+    </div>
 
     <section class="section is-smal">
 
