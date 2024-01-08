@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RecetteController;
 use App\Http\Controllers\CustomSearchController;
+use App\Http\Controllers\IngredientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,20 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RecetteController::class, 'form'])->name('form');
 
+Route::get('/ingredients', [IngredientController::class, 'index']);
+Route::post('/ingredients', [IngredientController::class, 'store']);
+Route::get('/ingredients/{id}', [IngredientController::class, 'show']);
+Route::delete('/ingredients/{id}', [IngredientController::class, 'destroy']);
+
 // Route d'accès à la clé API OpenAI
 Route::get('/api/openai-key', function () {
     return response()->json([
         'apiKey' => env('OPENAI_API_KEY')
     ]);
 });
-
-// Route d'accès à la clé API Google Custom Search
-/* Route::get('/api/customsearch-key', function () {
-    return response()->json([
-        'apiKey' => env('CUSTOMSEARCH_API_KEY'),
-        'searchEngineId' => env('SEARCH_ENGINE_ID')
-    ]);
-}); */
 
 Route::get('/api/fetch-image/{titreRecette}', [CustomSearchController::class, 'fetchImage'])->name('fetchImage');
 
