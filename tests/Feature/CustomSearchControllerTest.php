@@ -38,6 +38,6 @@ class CustomSearchControllerTest extends TestCase
         $imageURL = $controller->fetchImage('mock_recipe');
 
         // Assert that the returned URL is the placeholder URL
-        $this->assertEquals('https://decizia.com/blog/wp-content/uploads/2017/06/default-placeholder.png', $imageURL);
+        $this->assertEquals('https://img.freepik.com/premium-photo/steaming-hot-soup-bowl-made-wood-smoke-discerning-concentration_410516-40382.jpg', $imageURL);
     }
 }
