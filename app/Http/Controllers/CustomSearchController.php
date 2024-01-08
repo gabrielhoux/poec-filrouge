@@ -30,7 +30,7 @@ class CustomSearchController extends Controller
             $firstImageURL = $data['items'][0]['link'];
             return $firstImageURL;
         } else {
-            return "https://decizia.com/blog/wp-content/uploads/2017/06/default-placeholder.png";
+            return "https://img.freepik.com/premium-photo/steaming-hot-soup-bowl-made-wood-smoke-discerning-concentration_410516-40382.jpg";
         }
     }
 

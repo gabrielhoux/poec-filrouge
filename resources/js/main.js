@@ -3,11 +3,12 @@ import './cookies.js';
 import './fetchAPI.js';
 import $ from 'jquery';
 
+// Récupération de la variable locale de l'utilisateur indiquant l'acceptation des cookies
 var cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
-if (cookiesAccepted == true)
+// Initialisation du script Matomo pour l'enregistrement des événèments utilisateur si cookies acceptés
+if (cookiesAccepted === "true")
 {
-    // Matomo script
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     _paq.push(['trackPageView']);
@@ -30,11 +31,14 @@ $(function()
 });
 
 // Affichage du formulaire et dissimulation de la recette en cliquant sur le bouton flèche #return
-$('#return').on('click', () =>
+$('#returnButton').on('click', () =>
 {
     $('#formulaire').show();
     $('#recette').hide();
 
-    // Envoi de l'évenement à Matomo
-    _paq.push(['trackEvent', 'Button click', 'Return to form']);
+    // Envoi de l'évenement à Matomo si cookies acceptés
+    if (cookiesAccepted == true)
+    {
+        _paq.push(['trackEvent', 'Button click', 'Return to form']);
+    }
 });

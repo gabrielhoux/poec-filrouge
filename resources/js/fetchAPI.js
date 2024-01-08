@@ -12,11 +12,12 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 axios.defaults.withCredentials = true;
 
 // Initialisation des variables pour utiliser l'API OpenAI
-const assistantId = "asst_ISGtoQnIZkGJ9tCm2wICRLis";
 const apiKey = await fetchOpenAIKey();
 const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
-async function fetchOpenAIKey() {
+// Récupération de la clé API OpenAI via la route Laravel
+async function fetchOpenAIKey()
+{
   try {
     const response = await axios(`http://127.0.0.1:8000/api/openai-key`);
     const apiKey = response.data.apiKey;
@@ -27,31 +28,30 @@ async function fetchOpenAIKey() {
   }
 }
 
-export async function sendDataToAPI(data) {
-
-  const ingredients = data.ingredients;
-
+// Envoi des données du formulaire à l'API OpenAI
+export async function sendDataToAPI(data)
+{
+  // Initialisation du prompt d'instruction de base pour ChatGPT, garantissant (à 99%) un format de réponse JSON constant
   const instruction = `
-  Tu es un puits intarissable de savoir en termes de recettes de cuisine.
-  Afin que je puisse diffuser tes recettes sur internet pour que le monde entier en profite, il faut que la recette de cuisine que tu me donnes soit disposée tel un fichier JSON,
-  strictement d'après la structure suivante:
-  
-  {
-  "titre": "le titre de la recette",
-  "description": "une description qui vante la recette",
-  "ingredients": [une liste de string contenant chaque nom d'ingrédient et leur quantitée utilisée dans la recette, par exemple: "250g de farine", "50g de sucre", etc],
-  "type": "le type de plat (quiche, soupe, entrée, salade, etc)",
-  "regime": "le régime associé à la recette (végétarien, vegan, ou omnivore si aucun spécifié)",
-  "temps": "le temps de préparation et de cuisson",
-  "poids": "le poids calorique par portion de la recette",
-  "instructions": [la liste des instructions],
-  "portions": "le nombre de portions"
-  }
-  
-  N'ajoute rien en dehors des accolades, afin que ta réponse puisse être directement convertie en JSON.
+    Tu es un puits intarissable de savoir en termes de recettes de cuisine.
+    Afin que je puisse diffuser tes recettes sur internet pour que le monde entier en profite, il faut que la recette de cuisine que tu me donnes soit disposée tel un fichier JSON,
+    strictement d'après la structure suivante:
+    
+    {
+    "titre": "le titre de la recette",
+    "description": "une description qui vante la recette",
+    "ingredients": [une liste de string contenant chaque nom d'ingrédient et leur quantitée utilisée dans la recette, par exemple: "250g de farine", "50g de sucre", etc],
+    "type": "le type de plat (quiche, soupe, entrée, salade, etc)",
+    "regime": "le régime associé à la recette (végétarien, vegan, ou omnivore si aucun spécifié)",
+    "temps": "le temps de préparation et de cuisson",
+    "poids": "le poids calorique par portion de la recette",
+    "instructions": [la liste des instructions],
+    "portions": "le nombre de portions"
+    }
+    
+    N'ajoute rien en dehors des accolades, afin que ta réponse puisse être directement convertie en JSON.
 
-  Si l'un des ingrédients renseignés n'est en réalité pas un produit alimentaire (par exemple: de la mort aux rats, de l'eau de javel ou encore un chat), n'en prends pas compte et fais la recette en omettant tout élément illicite.
-  
+    Si l'un des ingrédients renseignés n'est en réalité pas un produit alimentaire (par exemple: de la mort aux rats, de l'eau de javel ou encore un chat), n'en prends pas compte et fais la recette en omettant tout élément illicite.
   `;
 
   // Construction du prompt pour demander une recette basée sur les ingrédients fournis
@@ -62,11 +62,14 @@ export async function sendDataToAPI(data) {
   criteres += (data.tempsPreparation ? `, temps maximum: ${data.tempsPreparation}` : "");
   criteres += (data.legerCheckbox ? ", léger: oui" : "");
 
-  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${ingredients.join(", ")}${criteres}`; 
+  // Initialisation de la question avec ingrédients et tout critère optionnel
+  const question = `Fais-moi une recette de cuisine avec les ingrédients suivants: ${data.ingredients.join(", ")}${criteres}`; 
 
+  // Initialisation du prompt final par concaténation
   const prompt = instruction + question;
   console.log(prompt);
 
+  // Appel à l'API OpenAI et envoi du prompt
   try {
     const completion = await openai.chat.completions.create({
       messages: [
@@ -78,56 +81,62 @@ export async function sendDataToAPI(data) {
       model: "gpt-3.5-turbo",
     });
 
+    // Récupération de la réponse de ChatGPT
     const result = completion.choices[0].message.content;
     console.log(result);
 
+    // Conversion de la réponse en JSON
     const recipe = JSON.parse(result);
 
     console.log(recipe);
 
+    // Envoi de la recette à l'affichage
     await displayRecipe(recipe);
 
   } catch (error) {
     console.error("Erreur OpenAI:", error);
-    return error;
+    return sendDataToAPI(data);
   }
 }
 
-async function displayRecipe(recipe) {
-  // Hide the form
+// Affichage de la recette via JQuery
+async function displayRecipe(recipe)
+{
+  // Dissimulation du formulaire
   $('#formulaire').hide();
 
-  // Show the recipe div
+  // Affichage de la recette
   $('#recette').show();
 
-  // Populate the recipe div with the data from the recipe
+  // Remplissage de la recette avec les différentes données
   $('#titre').text(recipe.titre);
   $('#description').text(recipe.description);
   $('#calories').text(recipe.poids);
   $('#temps').text(recipe.temps);
   $('#portions').text(recipe.portions);
 
-  // Clear and populate the instructions list
+  // Réinitialisation et remplissage de la liste d'instructions
   $('#instructions').empty();
   recipe.instructions.forEach(instruction => {
     $('#instructions').append(`<li>${instruction}</li>`);
   });
 
-  // Clear and populate the ingredients list
+  // Réinitialisation et remplissage de la liste d'ingrédients
   $('#ingredients').empty();
   recipe.ingredients.forEach(ingredient => {
     $('#ingredients').append(`<li>${ingredient}</li>`);
   });
 
-  // Get recipe image
+  // Récupération d'une image adaptée à la recette
   const imgUrl = await getRecipeImage(recipe.titre);
 
-  // Append the image to the figure
+  // Ajout de l'image au conteneur
   const imgElement = $('<img>', { id: 'imgRecette', src: imgUrl });
   $('#imgContainer').empty().append(imgElement);
   
 }
 
+// Récupération via route Laravel d'une image liée au titre de la recette
 async function getRecipeImage(titre)
 {
   try {
@@ -136,7 +145,9 @@ async function getRecipeImage(titre)
     return imgUrl;
   } catch (error) {
     console.error(error);
-    return error;
+
+    // Retourne une image de plat lambda comme illustration si récupération échouée
+    return "https://dispatcheseurope.com/wp-content/uploads/2021/05/Dining.jpg";
   }
 }
 

@@ -1,10 +1,15 @@
 import { openModal, closeModal } from './loadingModal.js';
 import $ from 'jquery';
 
+// Récupération de la variable locale de l'utilisateur indiquant l'acceptation des cookie
 var cookiesAccepted = localStorage.getItem('cookiesAccepted');
+
+// Initialisation de la variable des données du formulaire
+var data;
 
 document.addEventListener('DOMContentLoaded', () =>
 {
+    // Initialisation des éléments et boutons du formulaire
     const ingredientInput = document.getElementById('ingredient-input');
     const addIngredientBtn = document.getElementById('add-ingredient');
     const ingredientList = document.getElementById('ingredient-list');
@@ -12,30 +17,40 @@ document.addEventListener('DOMContentLoaded', () =>
 
     addIngredientBtn.addEventListener('click', () =>
     {
+        // Réinitialisation du message et indicateurs d'input invalide
         $('#input-message').text("");
         $('#ingredient-input').removeClass("is-danger");
         $('#input-icon-container').empty();
 
+        // Récupération de l'input d'ingrédient de l'utilisateur
         const newIngredient = ingredientInput.value.trim();
+
+        // Vérification que l'input est valide et exclusivement alphabétique via regex
         if (/^[A-Za-z\s]+$/.test(newIngredient))
         {
             // Formattage minuscule de l'ingrédient
             const formattedIngredient = newIngredient.toLowerCase();
-            // Ajout de l'évenement à Matomo
-            if (cookiesAccepted == true)
+
+            // Enregistrement de l'évènement via Matomo
+            if (cookiesAccepted === "true")
             {
                 _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient manuel', formattedIngredient]);
             }
+
             // Ajout de l'ingrédient
             handleIngredientClick(formattedIngredient);
+
             // Réinitialisation du champs
             ingredientInput.value = '';
         }
         else
         {
+            // Affichage d'un message et d'indicateurs d'input invalide
             $('#input-message').text("Entrée invalide");
             $('#ingredient-input').addClass("is-danger");
             $('#input-icon-container').append("<i class='fas fa-exclamation-triangle'></i>");
+
+            // Réinitialisation du champs
             ingredientInput.value = '';
         }
     });
@@ -45,12 +60,15 @@ document.addEventListener('DOMContentLoaded', () =>
     {
         button.addEventListener('click', (event) =>
         {
+            // Récupération du nom de l'ingrédient
             const ingredient = event.target.textContent;
-            // Ajout de l'évenement à Matomo
-            if (cookiesAccepted == true)
+
+            // Enregistrement de l'évènement via Matomo
+            if (cookiesAccepted === "true")
             {
                 _paq.push(['trackEvent', 'Button click', 'Ajout ingrédient', ingredient]);
             }
+
             // Ajout de l'ingrédient
             handleIngredientClick(ingredient);
         });
@@ -71,16 +89,16 @@ document.addEventListener('DOMContentLoaded', () =>
     form.addEventListener('submit', async (event) =>
     {
         event.preventDefault(); // Empêche la soumission par défaut
+
+        // Récupération des données du formulaire
         const ingredients = [...ingredientList.querySelectorAll('#ingredient-element')].map(el => el.textContent);
-        console.log(ingredients); // Affiche les ingrédients à soumettre (remplacez par l'envoi AJAX ou la manipulation des données)
-        // Soumettre les données via AJAX ou manipuler les données ici
         const selectedRegime = document.getElementById('regimeSelect').value;
         const selectedType = document.getElementById('typeSelect').value;
         const portionnbre = document.getElementById('portion-input').value;
         const tempsPreparation = document.getElementById('temps-preparation').value;
         const legerCheckbox = document.getElementById('legerCheckbox');
 
-        const data = { "ingredients": ingredients }; // Inclure toujours les ingrédients
+        data = { "ingredients": ingredients }; // Inclure toujours les ingrédients
         // Vérification des valeurs optionnelles
         if (selectedRegime !== "") data.selectedRegime = selectedRegime;
         if (selectedType !== "") data.selectedType = selectedType;
@@ -90,19 +108,23 @@ document.addEventListener('DOMContentLoaded', () =>
 
         console.log(data);
 
-        // Push custom event to track form submission with data submitted
-        if (cookiesAccepted == true)
+        // Enregistrement de l'évènement via Matomo
+        if (cookiesAccepted === "true")
         {
             _paq.push(['trackEvent', 'Form', 'Submission', data.toString()]);
         }
 
         try {
-            // Envoi des données à la fonction main
+            // Envoi des données à OpenAI et affichage du modal "Merci de patienter"
             const { sendDataToAPI } = await import('./fetchAPI.js');
             openModal();
             await sendDataToAPI(data);
             closeModal();
+
+            // Réinitialisation du formulaire
             form.reset();
+
+            // Réinitialisation de la liste d'ingrédients
             ingredientList.innerHTML = "";
         } catch (error) {
             console.error('Error sending data to main:', error);
@@ -110,14 +132,15 @@ document.addEventListener('DOMContentLoaded', () =>
       
     });
 
+    // Réinitialisation du formulaire sur clic du bouton "Réinitialiser"
     const cancelButton = document.getElementById('cancelButton');
     cancelButton.addEventListener('click', () =>
     {
         // Réinitialiser le formulaire
         form.reset();
 
-        // Ajout de l'évenement à Matomo
-        if (cookiesAccepted == true)
+        // Enregistrement de l'évènement via Matomo
+        if (cookiesAccepted === "true")
         {
             _paq.push(['trackEvent', 'Button click', 'Réinitialisation du formulaire']);
         }
@@ -136,6 +159,30 @@ document.addEventListener('DOMContentLoaded', () =>
         // Désélectionner la case à cocher "Léger"
         document.getElementById('legerCheckbox').checked = false;
     });
+
+    // Nouvelle génération de recette avec les mêmes ingrédients/critères sur clic du bouton
+    const regenerateButton = document.getElementById('regenerateButton');
+    regenerateButton.addEventListener('click', async (event) => {
+
+        event.preventDefault(); // Empêche la soumission par défaut
+
+        // Enregistrement de l'évènement via Matomo
+        if (cookiesAccepted === "true")
+        {
+            _paq.push(['trackEvent', 'Form', 'Resubmission', data.toString()]);
+        }
+
+        try {
+            // Envoi des données à OpenAI et affichage du modal "Merci de patienter"
+            const { sendDataToAPI } = await import('./fetchAPI.js');
+            openModal();
+            await sendDataToAPI(data);
+            closeModal();
+        } catch (error) {
+            console.error('Error sending data to main:', error);
+        }
+    });
+
 });
 
 // Ajout d'ingrédient à la liste, sous forme d'un bouton avec une icône X pour l'effacer si on clique dessus
@@ -143,7 +190,7 @@ function handleIngredientClick(ingredient)
 {
     // Initialisation de l'élément li sous forme d'un bouton
     const $li = $(`
-        <li class="button is-outlined is-primary">
+        <li id="button-element"  class="button is-outlined  mb-2 mr-2 ">
             <span id="ingredient-element">${ingredient}</span>
             <span class="icon is-small">
                 <i class="fas fa-times remove-ingredient"></i>
